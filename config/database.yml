@@ -19,7 +19,7 @@ development:
   encoding: utf8
   database: trackmystuff_development
   username: root
-  password:
+  password: sql-adm
   socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as 'test' will be erased and
@@ -30,7 +30,7 @@ test:
   encoding: utf8
   database: trackmystuff_test
   username: root
-  password:
+  password: sql-adm
   socket: /var/run/mysqld/mysqld.sock
 
 production:

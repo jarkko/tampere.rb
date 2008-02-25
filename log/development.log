@@ -1,0 +1,170 @@
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000313)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000245)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.055087)[0m   [0;1mCREATE TABLE `schema_info` (version int(11))[0m
+  [4;35;1mSQL (0.040236)[0m   [0mINSERT INTO `schema_info` (version) VALUES(0)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;35;1mSQL (0.000658)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to CreateItems (1)
+  [4;36;1mSQL (0.207729)[0m   [0;1mCREATE TABLE `items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) DEFAULT NULL, `label_id` int(11) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000661)[0m   [0mUPDATE schema_info SET version = 1[0m
+  [4;36;1mSQL (0.001008)[0m   [0;1mSELECT * FROM schema_info[0m
+  [4;35;1mSQL (0.013875)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.027111)[0m   [0;1mSHOW FIELDS FROM `items`[0m
+  [4;35;1mSQL (0.002581)[0m   [0mdescribe `items`[0m
+  [4;36;1mSQL (0.001632)[0m   [0;1mSHOW KEYS FROM `items`[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.000617)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000221)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.000437)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.011917)[0m   [0mDROP DATABASE IF EXISTS `trackmystuff_test`[0m
+  [4;36;1mSQL (0.000930)[0m   [0;1mCREATE DATABASE `trackmystuff_test` DEFAULT CHARACTER SET `utf8`[0m
+  [4;35;1mSQL (0.000217)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.000180)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S02Unknown table 'items': DROP TABLE `items`[0m
+  [4;36;1mSQL (0.006844)[0m   [0;1mCREATE TABLE `items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) DEFAULT NULL, `label_id` int(11) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.003164)[0m   [0mCREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.000803)[0m   [0;1mINSERT INTO `schema_info` (version) VALUES(0)[0m
+  [4;35;1mSQL (0.001975)[0m   [0mSHOW FIELDS FROM `schema_info`[0m
+  [4;36;1mSQL (0.000424)[0m   [0;1mUPDATE schema_info SET version = 1[0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000198)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000209)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.000708)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000582)[0m   [0mSELECT * FROM schema_info[0m
+  [4;36;1mSQL (0.008733)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.016569)[0m   [0mSHOW FIELDS FROM `items`[0m
+  [4;36;1mSQL (0.002358)[0m   [0;1mdescribe `items`[0m
+  [4;35;1mSQL (0.002734)[0m   [0mSHOW KEYS FROM `items`[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;35;1mSQL (0.000407)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000277)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.001010)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.318470)[0m   [0;1mDROP DATABASE IF EXISTS `trackmystuff_test`[0m
+  [4;35;1mSQL (0.000650)[0m   [0mCREATE DATABASE `trackmystuff_test` DEFAULT CHARACTER SET `utf8`[0m
+  [4;36;1mSQL (0.000271)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000407)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mMysql::Error: #42S02Unknown table 'items': DROP TABLE `items`[0m
+  [4;35;1mSQL (0.004321)[0m   [0mCREATE TABLE `items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) DEFAULT NULL, `label_id` int(11) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.004670)[0m   [0;1mCREATE TABLE `schema_info` (version int(11))[0m
+  [4;35;1mSQL (0.000910)[0m   [0mINSERT INTO `schema_info` (version) VALUES(0)[0m
+  [4;36;1mSQL (0.001845)[0m   [0;1mSHOW FIELDS FROM `schema_info`[0m
+  [4;35;1mSQL (0.000624)[0m   [0mUPDATE schema_info SET version = 1[0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000253)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000398)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mItem Load (0.000818)[0m   [0;1mSELECT * FROM `items` [0m
+  [4;35;1mItem Columns (0.002900)[0m   [0mSHOW FIELDS FROM `items`[0m
+  [4;36;1mSQL (0.000314)[0m   [0;1mBEGIN[0m
+  [4;35;1mItem Create (0.000396)[0m   [0mINSERT INTO `items` (`name`, `updated_at`, `label_id`, `created_at`) VALUES('my first thingy', '2008-02-25 13:44:28', NULL, '2008-02-25 13:44:28')[0m
+  [4;36;1mSQL (0.004988)[0m   [0;1mCOMMIT[0m
+  [4;35;1mItem Load (0.001085)[0m   [0mSELECT * FROM `items` [0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000248)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000525)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.000429)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000487)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to CreateLabels (2)
+  [4;36;1mSQL (0.037852)[0m   [0;1mCREATE TABLE `labels` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.011273)[0m   [0mUPDATE schema_info SET version = 2[0m
+  [4;36;1mSQL (0.000557)[0m   [0;1mSELECT * FROM schema_info[0m
+  [4;35;1mSQL (0.000659)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.002829)[0m   [0;1mSHOW FIELDS FROM `items`[0m
+  [4;35;1mSQL (0.002879)[0m   [0mdescribe `items`[0m
+  [4;36;1mSQL (0.002492)[0m   [0;1mSHOW KEYS FROM `items`[0m
+  [4;35;1mSQL (0.002394)[0m   [0mSHOW FIELDS FROM `labels`[0m
+  [4;36;1mSQL (0.002424)[0m   [0;1mdescribe `labels`[0m
+  [4;35;1mSQL (0.001873)[0m   [0mSHOW KEYS FROM `labels`[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;35;1mSQL (0.000826)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000602)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000465)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.000524)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.015409)[0m   [0mDROP DATABASE IF EXISTS `trackmystuff_test`[0m
+  [4;36;1mSQL (0.006650)[0m   [0;1mCREATE DATABASE `trackmystuff_test` DEFAULT CHARACTER SET `utf8`[0m
+  [4;35;1mSQL (0.000391)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.000400)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S02Unknown table 'items': DROP TABLE `items`[0m
+  [4;36;1mSQL (0.021606)[0m   [0;1mCREATE TABLE `items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) DEFAULT NULL, `label_id` int(11) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S02Unknown table 'labels': DROP TABLE `labels`[0m
+  [4;36;1mSQL (0.008954)[0m   [0;1mCREATE TABLE `labels` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.006983)[0m   [0mCREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.000860)[0m   [0;1mINSERT INTO `schema_info` (version) VALUES(0)[0m
+  [4;35;1mSQL (0.001949)[0m   [0mSHOW FIELDS FROM `schema_info`[0m
+  [4;36;1mSQL (0.000636)[0m   [0;1mUPDATE schema_info SET version = 2[0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000270)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000704)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mLabel Columns (0.001948)[0m   [0;1mSHOW FIELDS FROM `labels`[0m
+  [4;35;1mSQL (0.000201)[0m   [0mBEGIN[0m
+  [4;36;1mLabel Create (0.000371)[0m   [0;1mINSERT INTO `labels` (`name`) VALUES('Movie')[0m
+  [4;35;1mSQL (0.004119)[0m   [0mCOMMIT[0m
+  [4;36;1mItem Load (0.001379)[0m   [0;1mSELECT * FROM `items` LIMIT 1[0m
+  [4;35;1mLabel Load (0.000974)[0m   [0mSELECT * FROM `labels` WHERE (`labels`.`id` = 1) [0m
+  [4;36;1mItem Columns (0.002527)[0m   [0;1mSHOW FIELDS FROM `items`[0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000242)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000150)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mLabel Load (0.000625)[0m   [0;1mSELECT * FROM `labels` LIMIT 1[0m
+  [4;35;1mLabel Columns (0.001412)[0m   [0mSHOW FIELDS FROM `labels`[0m
+  [4;36;1mItem Load (0.000780)[0m   [0;1mSELECT * FROM `items` LIMIT 1[0m
+  [4;35;1mItem Columns (0.002451)[0m   [0mSHOW FIELDS FROM `items`[0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000187)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000513)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;35;1mSQL (0.000373)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000353)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.000648)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to CreateLabels (2)
+  [4;35;1mSQL (0.041081)[0m   [0mDROP TABLE `labels`[0m
+  [4;36;1mSQL (0.000419)[0m   [0;1mUPDATE schema_info SET version = 1[0m
+  [4;35;1mSQL (0.000463)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to CreateItems (1)
+  [4;36;1mSQL (0.031044)[0m   [0;1mDROP TABLE `items`[0m
+  [4;35;1mSQL (0.000452)[0m   [0mUPDATE schema_info SET version = 0[0m
+  [4;36;1mSQL (0.000470)[0m   [0;1mSELECT * FROM schema_info[0m
+  [4;35;1mSQL (0.000677)[0m   [0mSHOW TABLES[0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000347)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000160)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE `schema_info` (version int(11))[0m
+  [4;36;1mSQL (0.000521)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to CreateItems (1)
+  [4;35;1mSQL (0.008134)[0m   [0mCREATE TABLE `items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.000319)[0m   [0;1mUPDATE schema_info SET version = 1[0m
+  [4;35;1mSQL (0.000480)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to CreateLabels (2)
+  [4;36;1mSQL (0.004654)[0m   [0;1mCREATE TABLE `labels` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) DEFAULT NULL, `item_id` int(11) DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.000616)[0m   [0mUPDATE schema_info SET version = 2[0m
+  [4;36;1mSQL (0.000824)[0m   [0;1mSELECT * FROM schema_info[0m
+  [4;35;1mSQL (0.000762)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.002800)[0m   [0;1mSHOW FIELDS FROM `items`[0m
+  [4;35;1mSQL (0.002014)[0m   [0mdescribe `items`[0m
+  [4;36;1mSQL (0.002535)[0m   [0;1mSHOW KEYS FROM `items`[0m
+  [4;35;1mSQL (0.002625)[0m   [0mSHOW FIELDS FROM `labels`[0m
+  [4;36;1mSQL (0.001763)[0m   [0;1mdescribe `labels`[0m
+  [4;35;1mSQL (0.002694)[0m   [0mSHOW KEYS FROM `labels`[0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.001221)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000550)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mItem Load (0.001638)[0m   [0;1mSELECT * FROM `items` LIMIT 1[0m
+  [4;35;1mItem Columns (0.002167)[0m   [0mSHOW FIELDS FROM `items`[0m
+  [4;36;1mSQL (0.000949)[0m   [0;1mBEGIN[0m
+  [4;35;1mItem Create (0.000485)[0m   [0mINSERT INTO `items` (`name`, `updated_at`, `created_at`) VALUES('my first thingy', '2008-02-25 13:48:48', '2008-02-25 13:48:48')[0m
+  [4;36;1mSQL (0.005622)[0m   [0;1mCOMMIT[0m
+  [4;35;1mItem Load (0.001297)[0m   [0mSELECT * FROM `items` LIMIT 1[0m
+  [4;36;1mLabel Columns (0.001821)[0m   [0;1mSHOW FIELDS FROM `labels`[0m
+  [4;35;1mSQL (0.000254)[0m   [0mBEGIN[0m
+  [4;36;1mLabel Create (0.000431)[0m   [0;1mINSERT INTO `labels` (`item_id`, `name`) VALUES(1, 'Stuff')[0m
+  [4;35;1mSQL (0.012416)[0m   [0mCOMMIT[0m
+  [4;36;1mLabel Load (0.001576)[0m   [0;1mSELECT * FROM `labels` WHERE (labels.item_id = 1) [0m
