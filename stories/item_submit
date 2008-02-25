@@ -1,0 +1,23 @@
+Story: submitting a new item
+
+  As a user
+  I want to add new items
+  So that I can see what stuff I have
+
+    Scenario: a user submits a new item
+      Given no item named 'Star Wars IV' exists
+
+      When a user goes to home page
+      And clicks on 'Add new item'
+      And fills in Name with 'Star Wars IV'
+      And selects Label 'Movie'
+      And clicks the Save button
+
+      Then an item named 'Star Wars IV' should exist
+      And user should see the show items page
+      And page should include a notice 'new item added'
+      And page should have the item's name, label
+
+
+
+	
