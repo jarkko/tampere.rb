@@ -1,0 +1,26 @@
+<h1>Muokkaa sijaintia</h1>
+
+<%= error_messages_for :location %>
+
+<% form_for(@location) do |f| %>
+  <p>
+    <b>Nimi</b><br />
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <b>Osoite</b><br />
+    <%= f.text_field :address %>
+  </p>
+
+  <p>
+    <b>Kartta</b><br />
+    <%= f.text_field :google_maps %>
+  </p>
+
+  <p>
+    <%= f.submit "Päivitä" %>
+  </p>
+<% end %>
+
+<%= link_to 'Näytä', @location %>

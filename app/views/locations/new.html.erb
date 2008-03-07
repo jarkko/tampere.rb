@@ -1,0 +1,26 @@
+<h1>Uusi sijainti</h1>
+
+<%= error_messages_for :location %>
+
+<% form_for(@location) do |f| %>
+  <p>
+    <b>Nimi</b><br />
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <b>Osoite</b><br />
+    <%= f.text_field :address %>
+  </p>
+
+  <p>
+    <b>Google-kartta (URL)</b><br />
+    <%= f.text_field :google_maps, :size => 120 %>
+  </p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', locations_path %>

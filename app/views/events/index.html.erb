@@ -1,0 +1,25 @@
+<h2>Tulevat tapahtumat</h2>
+
+<table>
+  <tr>
+    <th>Päivämäärä</th>
+    <th>Ohjelma</th>
+  </tr>
+
+<% @events.each do |evt| %>
+  <% confirm_msg = "Oletko varma, että haluat poistaa #{fmt_date(evt.date)} tapahtuman?" %>
+  <tr class="<%= cycle('even', 'odd') %>">
+    <td><%=link_to fmt_date(evt.date), evt %></td>
+    <td><%=h evt.description %></td>
+<!--    <td><%= link_to 'Muokkaa', edit_event_path(evt) %></td>
+    <td><%= link_to('Poista',
+                    evt,
+                    :confirm => confirm_msg,
+                    :method => :delete) %></td> -->
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Lisää uusi tapahtuma', new_event_path %>

@@ -1,0 +1,12 @@
+<h2> <%= if @event.location; link_to @event.location.title, @event.location; end %>,
+ <%= fmt_date(@event.date) %></h2>
+
+18.30 - 21.00
+
+<p>
+  <b>Ohjelma:</b>
+  <%= @event.description %>
+</p>
+
+<%= link_to 'Muokkaa', edit_event_path(@event) %> |
+<%= link_to 'Takaisin tapahtumiin', events_path %>

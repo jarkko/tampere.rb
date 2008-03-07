@@ -1,0 +1,35 @@
+<h1>Lisää uusi tapahtuma</h1>
+
+<%= error_messages_for :event %>
+
+<% form_for(@event) do |f| %>
+
+  <p>
+    <b>Päivämäärä</b>,
+    oletuspvm <%= event_default_date.strftime("%a %d.%m.%Y") %><br />
+
+    <%= f.date_select :date, 
+                      :start_year => Date.today.year,
+                      :use_month_numbers => true,
+                      :order => [:day, :month, :year], 
+                      :default => event_default_date %>
+   
+  </p>
+
+  <p>
+    <b>Ohjelma</b><br />
+    <%= f.text_area :description %>
+  </p>
+
+  <p>
+    <b>Sijainti</b><br />
+    <%= f.select 'location_id', Location.find(:all).map { |loc| [loc.title, loc.id] } %>
+  </p>
+  
+
+  <p>
+    <%= f.submit "Tallenna" %>
+  </p>
+<% end %>
+
+<%= link_to 'Takaisin', events_path %>

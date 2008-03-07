@@ -1,0 +1,17 @@
+<p>
+  <b>Sijanti:</b>
+  <%=h @location.title %>
+</p>
+
+<p>
+  <b>Osoite:</b>
+  <%=h @location.address %>
+</p>
+
+<p>
+  <%= link_to 'Kartta', @location.google_maps %>
+</p>
+
+
+<%= link_to 'Muokkaa', edit_location_path(@location) %> |
+<%= link_to 'Takaisin', locations_path %>
