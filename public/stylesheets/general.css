@@ -77,8 +77,29 @@ div.progressBar div.background {
   width: 0%;
 }
 
-body > #content { margin-top: 6em;  }
-
 h1 { font-size: 200%; }
 h2 { font-size: 130%; }
 h3 { font-size: 120%; }
+
+body > #logo { float: left; }
+body > #login_menu {  float: right; }
+
+body > #menu {
+    clear: both;
+    float: right;
+    margin-top: 3em;
+    margin-right: 2em;
+    width: 25%;
+}
+
+body > #content { float: left;
+  margin-top: 2em;
+  margin-left: 5em;
+  width: 65%;
+}
+
+table {  width: 100%; }
+table.list tr td { padding-bottom: 1em; }
+
+tr.odd { background-color:  #ffffff; }
+tr.even { background-color: #fff4f4; }
