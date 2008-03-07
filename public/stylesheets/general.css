@@ -81,10 +81,15 @@ h1 { font-size: 200%; }
 h2 { font-size: 130%; }
 h3 { font-size: 120%; }
 
-body > #logo { float: left; }
-body > #login_menu {  float: right; color: #fff; }
+/* logo stuff */
+#logo { float: left; }
+#logo h1 { margin-top: 3em; }
 
-body > #menu {
+#logo_image { float: left; margin-top: 0em; margin-right: 1em; }
+
+#login_menu {  float: right; color: #fff; }
+
+#menu {
     clear: both;
     float: right;
     margin-top: 3em;
@@ -92,14 +97,16 @@ body > #menu {
     width: 25%;
 }
 
-body > #content { float: left;
+#content { float: left;
   margin-top: 2em;
   margin-left: 5em;
   width: 65%;
 }
 
 table {  width: 100%; }
-table.list tr td { padding-bottom: 1em; }
+table.list tr.upcoming td { padding-bottom: 1em; }
+table.list tr.past td { padding-top: 1em; font-style: italic; }
 
-tr.odd { background-color:  #ffffff; }
-tr.even { background-color: #fff4f4; }
+
+
+

@@ -8,11 +8,9 @@
     </tr>
 
     <% today = Time.now %>
-    <% @events.each do |evt| %>
-
+    <% @coming_events.each do |evt| %>
       <% confirm_msg = "Oletko varma, että haluat poistaa #{fmt_date(evt.date)} tapahtuman?" %>
-
-      <tr class="<%= cycle('even', 'odd') %> <%= evt.date >= today ? 'new': 'old'%>">
+      <tr class="<%= %> <%= cycle('even', 'odd') %> upcoming %>">
         <td><%=link_to fmt_date(evt.date), evt %></td>
         <td><%=h evt.description %></td>
         <!--    <td><%= link_to 'Muokkaa', edit_event_path(evt) %></td>
@@ -20,8 +18,29 @@
                         evt,
                         :confirm => confirm_msg,
                   :method => :delete) %></td> -->
-    </tr>
+      </tr>
     <% end %>
+
+  </table>
+  <table class="list">
+    <tr>
+      <th>Päivämäärä</th>
+      <th>Ohjelma</th>
+    </tr>
+
+    <% @past_events.each do |evt| %>
+      <% confirm_msg = "Oletko varma, että haluat poistaa #{fmt_date(evt.date)} tapahtuman?" %>
+      <tr class="<%= %> <%= cycle('even', 'odd') %> past %>">
+        <td><%=link_to fmt_date(evt.date), evt %></td>
+        <td><%=h evt.description %></td>
+        <!--    <td><%= link_to 'Muokkaa', edit_event_path(evt) %></td>
+                <td><%= link_to('Poista',
+                        evt,
+                        :confirm => confirm_msg,
+                  :method => :delete) %></td> -->
+      </tr>
+    <% end %>
+
   </table>
 
   <br />

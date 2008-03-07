@@ -2,7 +2,9 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-    @events = Event.find_recent(10)
+    events = Event.find_recent(10)
+    now = Time.now
+    @coming_events, @past_events = events.partition { |e| e.date >= now }
 
     respond_to do |format|
       format.html # index.html.erb
