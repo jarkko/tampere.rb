@@ -10,12 +10,14 @@
   <body>
     <div id="logo">
       <h1># Tampere.rb</h1>
-
+     
       members.each { |m| m.share(:knowledge).while_having(:fun) }
     </div>
 
     <div id="login_menu">
-      <%= current_user.login rescue "ei tieda" %>
+      Käyttäjä
+      <strong><%= current_user.login rescue "ei tieda" %></strong><br/>
+      Kirjaudu ulos
     </div>
 
     <div id="menu">Navigointi tähän</div>
