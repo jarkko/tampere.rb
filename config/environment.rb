@@ -37,8 +37,8 @@ Rails::Initializer.run do |config|
   # Make sure the secret is at least 30 characters and all random, 
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
-    :session_key => '_trackmystuff_session',
-    :secret      => '01d5a8b3c25caccecdb87681213c27f6fcbef94f21b2b166da99a7fbe736544f098453e1410c03e8a7fa14c3e36caefeedf8f747b6884b3107082d66164a2f55'
+    :session_key => '_tampere.rb_session',
+    :secret      => 'b2733bdb4a25d2d704584976e8d3d48efb7f265be7a3247fb5617cc4225ec9ff7680bdfe24823b67e7455224eca299e1a1bdaca823c1df2bec77f0ccd98b9383'
   }
 
   # Use the database for sessions instead of the cookie-based default,
