@@ -1,5 +1,7 @@
 require 'digest/sha1'
 class User < ActiveRecord::Base
+  has_many :presentations
+
   # Virtual attribute for the unencrypted password
   attr_accessor :password
 
@@ -9,10 +11,10 @@ class User < ActiveRecord::Base
   validates_length_of       :password, :within => 4..40, :if => :password_required?
   validates_confirmation_of :password,                   :if => :password_required?
   validates_length_of       :login,    :within => 3..40
-  validates_length_of       :email,    :within => 3..100
+  validates_length_of       :email,    :within => 5..100
   validates_uniqueness_of   :login, :email, :case_sensitive => false
   before_save :encrypt_password
-  
+
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :password, :password_confirmation
@@ -38,7 +40,7 @@ class User < ActiveRecord::Base
   end
 
   def remember_token?
-    remember_token_expires_at && Time.now.utc < remember_token_expires_at 
+    remember_token_expires_at && Time.now.utc < remember_token_expires_at
   end
 
   # These create and unset the fields required for remembering users between browser closes
@@ -63,16 +65,16 @@ class User < ActiveRecord::Base
   end
 
   protected
-    # before filter 
+    # before filter
     def encrypt_password
       return if password.blank?
       self.salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--") if new_record?
       self.crypted_password = encrypt(password)
     end
-      
+
     def password_required?
       crypted_password.blank? || !password.blank?
     end
-    
-    
+
+
 end

@@ -6,27 +6,48 @@
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title>Tampere.rb</title>
     <%= stylesheet_link_tag 'general' %>
+    <%= javascript_include_tag :all %>
   </head>
+
   <body>
-    <div id="logo">
-      <img id="logo_image" src="/images/nasinneula.png" alt=""/>
+    <div id="header">
+      <div id="logo">
+        <img id="logo_image" src="/images/nasinneula.png" alt=""/>
+        <h1># Tampere.rb</h1>
 
-      <h1># Tampere.rb</h1>
+        members.each { |m| m.share(:knowledge).while_having(:fun) }
 
-      members.each { |m| m.share(:knowledge).while_having(:fun) }
+        <br/>
+
+        <% if flash[:notice] %>
+        <span class="flash" id="notice">
+          <%= flash[:notice] %>
+        </span>
+        <% end %>
+      </div>
+
+      <div id="login_menu">
+        Käyttäjä
+        <strong><%= current_user.login rescue "ei tieda" %></strong><br/>
+        Kirjaudu ulos
+      </div>
     </div>
 
-    <div id="login_menu">
-      Käyttäjä
-      <strong><%= current_user.login rescue "ei tieda" %></strong><br/>
-      Kirjaudu ulos
+    <div id="main">
+      <div id="menu">
+        <ul>
+          <li>Tapahtumat (valitse montako, oletus = max 100)</li>
+          <li>Jäsenet</li>
+        </ul>
+      </div>
+
+      <div id="content">
+        <%= yield  %>
+      </div>
     </div>
 
-    <div id="menu">Navigointi tähän</div>
-    <div id="content">
-      <p style="color: green"><%= flash[:notice] %></p>
-
-      <%= yield  %>
+    <div id="footer">
+      Toteutettu Ruby on Railsillä (tietty)
     </div>
 
   </body>
