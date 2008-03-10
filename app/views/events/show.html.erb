@@ -1,6 +1,12 @@
-<h2> <%= if @event.location; link_to @event.location.title, @event.location; end %>,
- <%= fmt_date(@event.date) %></h2>
-
+<div id="event_display">
+<span class="add_new">
+  <%= link_to 'Muokkaa', edit_event_path(@event) %>
+  <%= link_to 'Poista', event_path(@event), :method => :delete %>
+</span>
+<h2>
+  <%= fmt_date(@event.date) %>
+</h2>
+<%= if @event.location; link_to @event.location.title, @event.location; end %>
 18.30 - 21.00
 
 <p>
@@ -8,5 +14,10 @@
   <%= @event.description %>
 </p>
 
-<%= link_to 'Muokkaa', edit_event_path(@event) %> |
-<%= link_to 'Takaisin tapahtumiin', events_path %>
+<div id="back_link">
+  <%= link_to 'Takaisin tapahtumiin', events_path %>
+</div>
+
+</div>
+
+

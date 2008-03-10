@@ -12,7 +12,7 @@
   <body>
     <div id="header">
 
-      <div id="logo">
+      <div id="banner">
         <img id="logo_image" src="/images/nasinneula.png" alt=""/>
         <h1># Tampere.rb</h1>
 
@@ -40,7 +40,8 @@
       <div id="menu">
         <ul>
           <li>Tapahtumat (valitse montako, oletus = max 100)</li>
-          <li>Jäsenet</li>
+          <%= link_to 'Tapahtumat', events_path %>
+          <li><%= link_to 'Jäsenet', users_path %></li>
         </ul>
       </div>
 
@@ -50,7 +51,7 @@
     </div>
 
     <div id="footer">
-      Toteutettu Ruby on Railsillä (tietty)
+      Ruby on Rails
     </div>
 
   </body>
