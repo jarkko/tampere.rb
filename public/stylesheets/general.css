@@ -31,7 +31,6 @@ body, p, ol, ul, td {
 }
 
 #notice { color: black;
-  background: #00ee00;
   font-weight: bold;
   font-size: 11px;
   padding: 0.25em 1.5em 0.5em 1.5em;
@@ -111,9 +110,10 @@ div.progressBar div.background {
 
 h1 { font-size: 200%; }
 h2 {
-  font-size: 130%;
+  font-size: 170%;
+  color: #7e6f48;
   background: #b9bd9c;
-  padding: 0.5em 1.0em 0.5em 1.0em;
+  padding: 0.25em 1.0em 0.5em 1.0em;
 }
 h3 { font-size: 120%; }
 
@@ -129,7 +129,6 @@ h3 { font-size: 120%; }
 
 #login_menu {
   float: right;
-  color: #8a2628;
 }
 
 table {  width: 100%; }
@@ -140,7 +139,8 @@ table.list tr.past td { padding-top: 1em; font-style: italic; }
 
 .add_new, modify {
   float: right;
-  margin-right: 3em;
+   margin-right: 1.5em;
+   margin-top: 0.5em;
 }
 
 .add_new, .add_new a {
@@ -179,8 +179,7 @@ table.list tr.past td { padding-top: 1em; font-style: italic; }
   margin-bottom: 0;
   width: 100%;
   font-weight: bold;
-  color: #fffdff;
-  background: #8a2628;
+  border-top: solid 2px #8a2628;
 }
 
 #date_header { width: 25%; }
