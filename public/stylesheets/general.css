@@ -42,11 +42,14 @@ pre {
   font-size: 11px;
 }
 
+#user_login { padding: 0.25em; }
 a {
   color: #475a22; /* green */
+  padding: 0.25em;
   font-weight: bold;
   text-decoration: none;
 }
+
 a:visited {  }
 a:hover { background-color: #fffdff; }
 
@@ -119,16 +122,19 @@ h3 { font-size: 120%; }
 
 /* logo stuff */
 #logo { float: left;
-  font-size: 130%;
+  font-size: 125%;
   font-weight: bold;
   color: #4f2f2f;
 }
+
+#logo { float: left; }
 #logo h1 { margin-top: 1em; }
 
 #logo_image { float: left; margin-top: 0em; margin-right: 1em; }
 
 #login_menu {
   float: right;
+  text-align: right;
 }
 
 table {  width: 100%; }
@@ -144,9 +150,12 @@ table.list tr.past td { padding-top: 1em; font-style: italic; }
 }
 
 .add_new, .add_new a {
-  color: white;
+  color: #fffdff;
   font-weight: bold;
 }
+
+.add_new a:hover, .add_new a:hover { background-color: #475a22; }
+
 
 #menu {
     clear: both;
