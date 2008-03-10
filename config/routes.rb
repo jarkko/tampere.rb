@@ -2,7 +2,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
 
   map.resource :session
-  map.resource :session
 
   map.resources :locations
   map.resources :events

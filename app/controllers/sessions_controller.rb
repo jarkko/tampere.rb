@@ -14,8 +14,9 @@ class SessionsController < ApplicationController
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
       redirect_back_or_default(DEFAULT_URL)
-      flash[:notice] = "Logged in successfully"
+      flash[:notice] = "Sisäänkirjautuminen onnistui"
     else
+      flash[:error] = "Väärä käyttäjätunnus tai salasana"
       render :action => 'new'
     end
   end
@@ -24,7 +25,7 @@ class SessionsController < ApplicationController
     self.current_user.forget_me if logged_in?
     cookies.delete :auth_token
     reset_session
-    flash[:notice] = "You have been logged out."
+    flash[:notice] = "Olet kirjautunut pois palvelusta."
     redirect_back_or_default(DEFAULT_URL)
   end
 end

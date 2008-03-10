@@ -27,9 +27,15 @@
       </div>
 
       <div id="login_menu">
-        Käyttäjä
-        <strong><%= current_user.login rescue "ei tieda" %></strong><br/>
-        Kirjaudu ulos
+        <% if (current_user.login rescue nil) %>
+          <strong><%= current_user.login %></strong><br/>
+          <%= link_to('Poistu palvelusta', "/sessions/destroy") %>
+        <% else %>
+          <strong>Anonyymi nössö</strong><br/>
+          <%= link_to('Kirjaudu sisään', "/sessions/new") %> |
+          <%= link_to('Rekisteröidy', "/users/new") %>
+        <% end %>
+
       </div>
     </div>
 
