@@ -1,6 +1,7 @@
 <p>
+
   <b>Sijanti:</b>
-  <%=h @location.title %>
+  <%=h @location.title %>, <%= link_to 'kartta', @location.google_maps %>
 </p>
 
 <p>
@@ -9,9 +10,7 @@
 </p>
 
 <p>
-  <%= link_to 'Kartta', @location.google_maps %>
+  <%= link_to 'Muokkaa', edit_location_path(@location) %> |
+  <%= link_to 'Sijainnit', locations_path %>
+
 </p>
-
-
-<%= link_to 'Muokkaa', edit_location_path(@location) %> |
-<%= link_to 'Takaisin', locations_path %>

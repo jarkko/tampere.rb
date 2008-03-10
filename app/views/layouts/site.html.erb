@@ -17,12 +17,8 @@
 
         members.each { |m| m.share(:knowledge).while_having(:fun) }
 
-        <br/>
-
         <% if flash[:notice] %>
-        <span class="flash" id="notice">
-          <%= flash[:notice] %>
-        </span>
+          <p class="flash" id="notice"><%= flash[:notice] %></p>
         <% end %>
       </div>
 
