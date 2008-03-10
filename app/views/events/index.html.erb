@@ -12,30 +12,34 @@
 
     <% today = Time.now %>
     <% @coming_events.each do |evt| %>
-      <% confirm_msg = "Oletko varma, että haluat poistaa #{fmt_date(evt.date)} tapahtuman?" %>
-      <tr class="<%= %> <%= cycle('even', 'odd') %> upcoming %>">
-        <td><%=link_to fmt_date(evt.date), evt %></td>
-        <td><%=h evt.description %></td>
-        <!--    <td><%= link_to 'Muokkaa', edit_event_path(evt) %></td>
-                <td><%= link_to('Poista',
-                        evt,
-                        :confirm => confirm_msg,
-                  :method => :delete) %></td> -->
-      </tr>
+    <% confirm_msg = "Oletko varma, että haluat poistaa #{fmt_date(evt.date)} tapahtuman?" %>
+    <tr class="<%= %> <%= cycle('even', 'odd') %> upcoming %>">
+      <td><%=link_to fmt_date(evt.date), evt %></td>
+      <td><%=h evt.description %></td>
+      <!--    <td><%= link_to 'Muokkaa', edit_event_path(evt) %></td>
+              <td><%= link_to('Poista',
+                      evt,
+                      :confirm => confirm_msg,
+                :method => :delete) %></td> -->
+    </tr>
     <% end %>
 
-    <tr><td colspan="2"><h2>Menneet tapahtumat</h2></td></tr>
+    <tr>
+      <td colspan="2">
+        <h2>Menneet tapahtumat</h2>
+      </td>
+    </tr>
     <% @past_events.each do |evt| %>
-      <% confirm_msg = "Oletko varma, että haluat poistaa #{fmt_date(evt.date)} tapahtuman?" %>
-      <tr class="<%= %> <%= cycle('even', 'odd') %> past %>">
-        <td><%=link_to fmt_date(evt.date), evt %></td>
-        <td><%=h evt.description %></td>
-        <!--    <td><%= link_to 'Muokkaa', edit_event_path(evt) %></td>
-                <td><%= link_to('Poista',
-                        evt,
-                        :confirm => confirm_msg,
-                  :method => :delete) %></td> -->
-      </tr>
+    <% confirm_msg = "Oletko varma, että haluat poistaa #{fmt_date(evt.date)}. tapahtuman?" %>
+    <tr class="<%= %> <%= cycle('even', 'odd') %> past %>">
+      <td><%=link_to fmt_date(evt.date), evt %></td>
+      <td><%=h evt.description %></td>
+      <!--    <td><%= link_to 'Muokkaa', edit_event_path(evt) %></td>
+              <td><%= link_to('Poista',
+                      evt,
+                      :confirm => confirm_msg,
+                :method => :delete) %></td> -->
+    </tr>
     <% end %>
 
   </table>
