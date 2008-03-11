@@ -1,4 +1,4 @@
-
+require 'date'
 class Recurrence
   def initialize(date, opts)
     @base_date = date
@@ -18,16 +18,14 @@ class Recurrence
   
   def get_next_recurrence(date)
     if @opts[:day_of_month]
-      dow_index = dow_to_index(@opts[:day_of_month])
-      begin
-        date = date.succ
-      end while date.wday != dow_index
+      wanted_index = dow_to_index(@opts[:day_of_month])
+      cur_day_index = date.wday
+      offset = wanted_index - cur_day_index
+      offset += 7 if offset < 0
+      date = date + offset
       
       if date.day > 7 # we are pass the first given date in current month
-        cur_month = date.mon
-        while (date.mon == cur_month)
-          date = date + 7
-        end
+        date = get_next_recurrence(date.succ)
       end
     end
     date

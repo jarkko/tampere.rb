@@ -22,7 +22,7 @@
   </p>
 
   <p>
-    <b>Sijainti</b><br />
+    <b>Sijainti</b> (lisää tähän mahku luoda uusia)<br />
     <%= f.select 'location_id', Location.find(:all).map { |loc| [loc.title, loc.id] } %>
   </p>
 

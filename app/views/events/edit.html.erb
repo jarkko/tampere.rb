@@ -14,7 +14,7 @@
   </p>
 
   <p>
-    <b>Sijainti</b><br />
+    <b>Sijainti</b> (+ mahku lisätä uusia)<br />
     <%= f.select 'location_id', Location.find(:all).map { |loc| [loc.title, loc.id] } %>
   </p>
 
