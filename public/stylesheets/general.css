@@ -199,3 +199,4 @@ table.list tr.past td { padding-top: 1em; font-style: italic; }
 
 .list td { vertical-align: top; }
 
+label { font-weight: bold; color: red; }

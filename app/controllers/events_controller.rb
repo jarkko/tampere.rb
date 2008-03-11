@@ -8,7 +8,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @events }
+      format.xml  { render :xml => events }
     end
   end
 
@@ -26,7 +26,7 @@ class EventsController < ApplicationController
   # GET /events/new
   # GET /events/new.xml
   def new
-    @event = Event.new
+    @event = Event.new_default
 
     respond_to do |format|
       format.html # new.html.erb
@@ -47,8 +47,8 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.save
         flash[:notice] = 'Tapahtuma luotu.'
-        format.html { redirect_to(@event) }
-        format.xml  { render :xml => @event, :status => :created, :location => @event }
+        format.html { redirect_to events_path }
+        # format.xml  { render :xml => ... }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
