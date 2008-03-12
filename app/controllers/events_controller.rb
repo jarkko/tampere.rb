@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-    events = Event.find_recent(10)
+    events = Event.find_recent(4)
     now = Time.now
     @coming_events, @past_events = events.partition { |e| e.date >= now }
 
@@ -12,6 +12,20 @@ class EventsController < ApplicationController
     end
   end
 
+  # GET /events/archived
+  # GET /events/archived.xml
+  def archived
+    events = Event.find_recent(100)
+    now = Time.now
+    @coming_events = []
+    @past_events = events.select { |e| e.date < now }
+
+    respond_to do |format|
+      format.html { render :action => :index }
+      format.xml  { render :xml => events }
+    end
+  end
+  
   # GET /events/1
   # GET /events/1.xml
   def show
@@ -43,7 +57,9 @@ class EventsController < ApplicationController
   # POST /events.xml
   def create
     @event = Event.new(params[:event])
-
+    # TODO: move this elsewhere.. besides, it should be done automatically 
+    # for all date parsing 
+    @event.date = Date.strptime(params[:event]['date'], '%d.%m.%Y')
     respond_to do |format|
       if @event.save
         flash[:notice] = 'Tapahtuma luotu.'

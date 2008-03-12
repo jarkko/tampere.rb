@@ -143,8 +143,6 @@ h3 { font-size: 120%; }
 table {  width: 100%; }
 th { text-align: left; }
 th { text-align: left; padding-bottom: 1.5em; }
-table.list tr.upcoming td { padding-bottom: 1em; }
-table.list tr.past td { padding-top: 1em; font-style: italic; }
 
 .add_new, modify {
   float: right;
@@ -197,6 +195,8 @@ table.list tr.past td { padding-top: 1em; font-style: italic; }
 #date_header { width: 25%; }
 #program_header { width: 70%; }
 
-.list td { vertical-align: top; }
+.list td { vertical-align: top; padding-right: 4em; }
+.list tr.upcoming td { padding-bottom: 1em; }
+.list tr.past td { padding-top: 1em; font-style: italic; }
 
 label { font-weight: bold; }

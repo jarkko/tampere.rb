@@ -1,6 +1,7 @@
 <div id="event_display">
 <span class="add_new">
-  <%= link_to 'Muokkaa', edit_event_path(@event) %>
+  <%= link_to 'Lisää uusi', new_event_path %> |
+  <%= link_to 'Muokkaa', edit_event_path(@event) %> |
   <%= link_to 'Poista', event_path(@event), :method => :delete %>
 </span>
 <h2>
@@ -11,7 +12,7 @@
 
 <p>
   <b>Ohjelma:</b>
-  <%= @event.description %>
+  <%= RedCloth.new(@event.description).to_html %>
 </p>
 
 <div id="back_link">

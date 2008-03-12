@@ -5,8 +5,8 @@
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title>Tampere.rb</title>
-    <%= stylesheet_link_tag 'general' %>
-    <%= javascript_include_tag :all %>
+    <%= stylesheet_link_tag :all, :cache => true %>
+    <%= javascript_include_tag :all, :cache => true %>
     <%= calendar_date_select_includes "red" %>
   </head>
 
@@ -41,7 +41,7 @@
       <div id="menu">
         <ul>
           <li>Tapahtumat (valitse montako, oletus = max 100)</li>
-          <%= link_to 'Tapahtumat', events_path %>
+          <%= link_to 'Arkisto', archived_events_path %>
           <li><%= link_to 'Jäsenet', users_path %></li>
         </ul>
       </div>
