@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
   belongs_to :location
-  validates_uniqueness_of :date
+  validates_uniqueness_of :date, :message => 'päiväys jo käytetty'
+  validates_presence_of :description, :message => 'ohjelman sisältö puuttuu'
 
   #
   # Class methods

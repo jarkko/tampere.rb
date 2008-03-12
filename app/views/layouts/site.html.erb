@@ -5,8 +5,11 @@
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title>Tampere.rb</title>
-    <%= stylesheet_link_tag :all, :cache => true %>
-    <%= javascript_include_tag :all, :cache => true %>
+    <% # stylesheet_link_tag :all, :cache => true %>
+    <% # javascript_include_tag :all, :cache => true %>
+    <%= stylesheet_link_tag :all, :cache => false %>
+    <%= javascript_include_tag :all, :cache => false %>
+
     <%= calendar_date_select_includes "red" %>
 
     <script type="text/javascript">
@@ -15,12 +18,9 @@
       "Now": "Nyt",
       "Today": "Tänään"
       }
-
       Date.weekdays = $w("Su Ma Ti Ke To Pe La");
-
       Date.months = $w("Tammi Helmi Maalis Huhti Touko Kesä Heinä Elo Syys Loka Marras Joulu" );
      </script>
-
   </head>
 
   <body>
@@ -40,7 +40,7 @@
       <div id="login_menu">
         <% if (current_user.login rescue nil) %>
           <strong><%= current_user.login %></strong><br/>
-          <%= link_to('Poistu palvelusta', "/sessions/destroy") %>
+          <%= link_to('Sulje istunto', "/sessions/destroy") %>
         <% else %>
           <div id="credentials">
                 <% form_tag session_path do -%>
@@ -48,24 +48,19 @@
                   <%= text_field_tag 'login' %><br/>
 
                  <label for="password">Salasana</label>
-                  <%= password_field_tag 'password' %>
-                <%= submit_tag 'Kirjaudu' %>
+                  <%= password_field_tag 'password' %><br/>
+          <%= link_to('Rekisteröidy', "/users/new") %> |  <%= submit_tag 'Kirjaudu' %>
                 <% end -%>
            </div>
-          <%= link_to('Rekisteröidy', "/users/new") %>
         <% end %>
       </div>
     </div>
 
     <div id="main">
       <div id="menu">
-<!--
-        <ul>
-          <li>Tapahtumat (valitse montako, oletus = max 100)</li>
-          <%= link_to 'Arkisto', archived_events_path %>
-          <li><%= link_to 'Jäsenet', users_path %></li>
-        </ul>
--->
+        <span id="events"><%= link_to 'Tapahtumat', events_path %></span> |
+        <span id="events"><%= link_to 'Arkisto', archived_events_path %></span> |
+        <span id="members"><%= link_to 'Jäsenet', users_path %></span> 
       </div>
 
       <div id="content">

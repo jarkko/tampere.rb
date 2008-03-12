@@ -2,7 +2,7 @@
 <h2>Lisää uusi tapahtuma</h2>
 
 <%= error_messages_for :event %>
-
+<% @event.location = nil %>
 <% form_for(@event) do |f| %>
   <p>
     <%= f.label(:date, 'Päivämäärä:') %>
