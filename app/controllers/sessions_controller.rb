@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       flash[:notice] = "Sisäänkirjautuminen onnistui"
     else
       flash[:error] = "Väärä käyttäjätunnus tai salasana"
-      render :action => 'new'
+      render :controller => :events, :action => 'index'
     end
   end
 
