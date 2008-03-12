@@ -8,6 +8,19 @@
     <%= stylesheet_link_tag :all, :cache => true %>
     <%= javascript_include_tag :all, :cache => true %>
     <%= calendar_date_select_includes "red" %>
+
+    <script type="text/javascript">
+      _translations = {
+      "OK": "OK",
+      "Now": "Nyt",
+      "Today": "Tänään"
+      }
+
+      Date.weekdays = $w("Su Ma Ti Ke To Pe La");
+
+      Date.months = $w("Tammi Helmi Maalis Huhti Touko Kesä Heinä Elo Syys Loka Marras Joulu" );
+     </script>
+
   </head>
 
   <body>

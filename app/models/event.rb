@@ -1,11 +1,11 @@
 class Event < ActiveRecord::Base
   belongs_to :location
   validates_uniqueness_of :date
-  
+
   #
   # Class methods
   #
-  
+
   # find count most recent events)
   def self.find_recent(count)
     self.find(:all, :order => 'date DESC', :limit => count)
@@ -19,8 +19,8 @@ class Event < ActiveRecord::Base
   def self.find_most_recent
     Event.find(:first, :order => 'date DESC')
   end
-  
-  
+
+
   #
   # Instance methods
   #
@@ -35,7 +35,7 @@ class Event < ActiveRecord::Base
     end
 
     rec = Recurrence.new(default_date,
-                         :day_of_month => :thursday, 
+                         :day_of_month => :thursday,
                          :every => :first)
     rec.next[0]
   end

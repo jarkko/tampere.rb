@@ -25,7 +25,7 @@ class EventsController < ApplicationController
       format.xml  { render :xml => events }
     end
   end
-  
+
   # GET /events/1
   # GET /events/1.xml
   def show
@@ -56,9 +56,17 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.xml
   def create
+#     unless params[:event]['location'].blank?
+#       params[:event].delete('location_id')
+#       params[:event]['location'] = Location.new(:title => params[:event]['location'])
+#     else
+#       params[:event].delete('location')
+#     end
+    set_location_param(params[:event])
+
     @event = Event.new(params[:event])
-    # TODO: move this elsewhere.. besides, it should be done automatically 
-    # for all date parsing 
+    # TODO: move this elsewhere.. besides, it should be done automatically
+    # for all date parsing
     @event.date = Date.strptime(params[:event]['date'], '%d.%m.%Y')
     respond_to do |format|
       if @event.save
@@ -99,5 +107,14 @@ class EventsController < ApplicationController
       format.html { redirect_to(events_url) }
       format.xml  { head :ok }
     end
+  end
+
+  private
+  def set_location_param(hsh)
+    loc_name = hsh['location']
+    hsh['location'] =
+      loc_name.blank? ? Location.find(hsh['location_id']) :
+                        Location.new(:title => loc_name)
+    hsh.delete('location_id')
   end
 end
