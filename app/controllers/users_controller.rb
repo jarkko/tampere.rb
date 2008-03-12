@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
-  
 
   # render new.rhtml
   def new
@@ -14,14 +13,12 @@ class UsersController < ApplicationController
     # uncomment at your own risk
     # reset_session
     @user = User.new(params[:user])
-    @user.save
-    if @user.errors.empty?
+    if @user.save
       self.current_user = @user
       redirect_back_or_default('/')
-      flash[:notice] = "Thanks for signing up!"
+      flash[:notice] = "Rekisteröityminen onnistui"
     else
       render :action => 'new'
     end
   end
-
 end
