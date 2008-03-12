@@ -42,8 +42,16 @@
           <strong><%= current_user.login %></strong><br/>
           <%= link_to('Poistu palvelusta', "/sessions/destroy") %>
         <% else %>
-          <strong id="user_login">Anonyymi nössö</strong><br/>
-          <%= link_to('Kirjaudu sisään', "/sessions/new") %> |
+          <div id="credentials">
+                <% form_tag session_path do -%>
+                  <label for="login">Käyttäjätunnus</label>
+                  <%= text_field_tag 'login' %><br/>
+
+                 <label for="password">Salasana</label>
+                  <%= password_field_tag 'password' %>
+                <%= submit_tag 'Kirjaudu' %>
+                <% end -%>
+           </div>
           <%= link_to('Rekisteröidy', "/users/new") %>
         <% end %>
       </div>

@@ -200,3 +200,5 @@ th { text-align: left; padding-bottom: 1.5em; }
 .list tr.past td { padding-top: 1em; font-style: italic; }
 
 label { font-weight: bold; }
+
+#credentials form { font-size: small; text-align: left; }
