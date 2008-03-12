@@ -3,8 +3,6 @@ class SessionsController < ApplicationController
   DEFAULT_URL = '/events'
 
   # render new.rhtml
-  def new
-  end
 
   def create
     self.current_user = User.authenticate(params[:login], params[:password])
@@ -16,9 +14,11 @@ class SessionsController < ApplicationController
       redirect_back_or_default(DEFAULT_URL)
       flash[:notice] = "Sisäänkirjautuminen onnistui"
     else
-      flash[:error] = "Väärä käyttäjätunnus tai salasana"
-      render :controller => :events, :action => 'index'
+      logger.debug("here")
+      redirect_to events_path
+      flash[:notice] = "Väärä käyttäjätunnus tai salasana"
     end
+    
   end
 
   def destroy
