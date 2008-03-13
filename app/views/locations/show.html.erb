@@ -1,7 +1,10 @@
 <p>
 
   <b>Sijanti:</b>
-  <%=h @location.title %>, <%= link_to 'kartta', @location.google_maps %>
+  <%= @location.title %>
+  <% unless @location.google_maps.blank? %>
+    , <%= link_to 'kartta', @location.google_maps %>
+  <% end %>
 </p>
 
 <p>
