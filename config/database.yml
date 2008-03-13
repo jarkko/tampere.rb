@@ -1,6 +1,7 @@
 # SQLite version 3.x
 #   gem install mysql-ruby (not necessary on OS X Leopard)
 development:
+  socket: /var/run/mysqld/mysqld.sock
   adapter: mysql
   database: tampererb_dev
   username: tampererb
