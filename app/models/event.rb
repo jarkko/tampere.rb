@@ -1,5 +1,9 @@
 class Event < ActiveRecord::Base
   belongs_to :location
+
+  has_many :participations
+  has_many :users, :through => :participations
+
   validates_uniqueness_of :date, :message => 'päiväys jo käytetty'
   validates_presence_of :description, :message => 'ohjelman sisältö puuttuu'
 
@@ -21,10 +25,17 @@ class Event < ActiveRecord::Base
     Event.find(:first, :order => 'date DESC')
   end
 
+  def self.register_user(event_id, user_id)
+    self.find(event_id).participations.create(:user_id => user_id)
+  end
 
   #
   # Instance methods
   #
+
+  def registered_count
+    self.participations.size
+  end
 
   private
 

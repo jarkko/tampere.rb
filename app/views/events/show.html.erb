@@ -1,24 +1,29 @@
 <div id="event_display">
-<span class="add_new">
-  <%= link_to 'Lisää uusi', new_event_path %> |
-  <%= link_to 'Muokkaa', edit_event_path(@event) %> |
-  <%= link_to 'Poista', event_path(@event), :method => :delete %>
-</span>
-<h2>
-  <%= fmt_date(@event.date) %>
-</h2>
-<%= if @event.location; link_to @event.location.title, @event.location; end %>
-18.30 - 21.00
+  <span class="add_new">
+    <%= link_to 'Lisää uusi', new_event_path %> |
+    <%= link_to 'Muokkaa', edit_event_path(@event) %> |
+    <%= link_to 'Poista', event_path(@event), :method => :delete %>
+  </span>
+  <h2>
+    <%= fmt_date(@event.date) %>
+  </h2>
+  <%= if @event.location; link_to @event.location.title, @event.location; end %>
+  18.30 - 21.00
 
-<p>
-  <b>Ohjelma:</b>
-  <%= RedCloth.new(@event.description).to_html %>
-</p>
+  <div id="program_details">
+    <div id="program">
+      <strong>Ohjelma:</strong>
+      <%= RedCloth.new(@event.description).to_html %>
+    </div>
+
+    <div id="participants">
+      <strong>Osallistujat:</strong>
+      <%= @event.users.map(&:login).sort_by {|login| login.downcase}.to_sentence %>
+      (<%= @event.users.size %>)
+    </div>
+  </div>
+</div>
 
 <div id="back_link">
   <%= link_to 'Takaisin tapahtumiin', events_path %>
 </div>
-
-</div>
-
-

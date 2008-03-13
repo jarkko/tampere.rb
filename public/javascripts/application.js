@@ -6,6 +6,6 @@
 Event.observe(window, 'load', function() {
   $A(document.getElementsByClassName('flash')).each(function(o) {
     o.opacity = 100.0
-    Effect.Fade(o, {duration: 6.0})
+    Effect.Fade(o, {duration: 15.0})
   });
 });

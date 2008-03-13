@@ -109,6 +109,11 @@ class EventsController < ApplicationController
     end
   end
 
+  def register
+    Event.register_user(params[:id], params[:user_id])
+    redirect_to events_path
+  end
+
   private
   def set_location_param(hsh)
     loc_name = hsh['location']

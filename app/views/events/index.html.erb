@@ -12,42 +12,48 @@
       <th id="date_header">Päivämäärä</th>
       <th id="program_header">Ohjelma</th>
       <th id="location_header">Sijainti</th>
+      <th id="registered_header">Ilmoittautuneita</th>
     </tr>
 
     <% @coming_events.each do |evt| %>
     <% confirm_msg = "Oletko varma, että haluat poistaa #{fmt_date(evt.date)} tapahtuman?" %>
-    <tr class="<%= %> <%= cycle('even', 'odd') %> upcoming %>">
-      <td><%=link_to fmt_date(evt.date), evt %></td>
+    <tr class="<%= cycle('even', 'odd') %> upcoming">
+      <td><%= link_to fmt_date(evt.date), evt %></td>
       <td><%= truncate(evt.description, 160) %></td>
       <!--    <td><%= link_to 'Muokkaa', edit_event_path(evt) %></td>
               <td><%= link_to('Poista',
                       evt,
                       :confirm => confirm_msg,
                 :method => :delete) %></td> -->
-      <td><%=h evt.location.title %></td>
+      <td><%= evt.location.title %></td>
+      <td>
+        <%= evt.registered_count %>
+        <% unless (current_user.participates_event?(evt.id) rescue true) %>
+
+            <%= button_to('Ilmoittaudu',
+                          :id => evt.id,
+                          :user_id => current_user.id,
+                          :controller => :events,
+                          :action => :register) %>
+        <% end %>
+      </td>
     </tr>
     <% end %>
 
-
     <% unless @coming_events.empty? %>
     <tr>
-      <th colspan="3">
+      <th colspan="4">
         <h2>Menneet tapahtumat</h2>
-      </td>
+      </th>
     </tr>
     <% end %>
 
     <% @past_events.each do |evt| %>
     <tr class="<%= %> <%= cycle('even', 'odd') %> past %>">
-      <td><%=link_to fmt_date(evt.date), evt %></td>
+      <td><%= link_to fmt_date(evt.date), evt %></td>
       <td><%= truncate(evt.description, 160) %></td>
-      <% # <td><%= link_to 'Muokkaa', edit_event_path(evt) </td>
-         #     <td><%= link_to('Poista',
-         #             evt,
-         #             :confirm => confirm_msg,
-         #       :method => :delete)
-       %>
-      <td><%=h evt.location.title %></td>
+      <td><%= evt.location.title %></td>
+      <td><%= evt.registered_count %></td>
     </tr>
     <% end %>
 

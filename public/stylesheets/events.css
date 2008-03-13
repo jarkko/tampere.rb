@@ -1,2 +1,15 @@
-#date_header { width: 25%; }
-#program_header { width: 70%; }
+.list td { vertical-align: top; padding-right: 4em; }
+tr.upcoming td { padding-bottom: 1em; }
+tr.past { padding-top: 0.5em; color: #777; }
+
+#date_header { width: 15%; padding-bottom: 1em;}
+#program_header { width: 50%; }
+#location_header { width: 15%; }
+#registered_header { width: 20%; }
+
+.list .button-to { margin-left: 1em; }
+
+#program_details { margin-top: 2em; width: 100%; margin-bottom: 2em; }
+#program { float: left; position: relative; width: 60%; }
+#participants { float: right; position: relative; width: 40%; }
+#event_display { width: 100%; min-height: 10em; }

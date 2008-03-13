@@ -1,6 +1,7 @@
 require 'digest/sha1'
 class User < ActiveRecord::Base
-  has_many :presentations
+  has_many :participations
+  has_many :events, :through => :participations
 
   # Virtual attribute for the unencrypted password
   attr_accessor :password
@@ -8,11 +9,12 @@ class User < ActiveRecord::Base
   validates_presence_of     :login, :email
   validates_presence_of     :password,                   :if => :password_required?
   validates_presence_of     :password_confirmation,      :if => :password_required?
-  validates_length_of       :password, :within => 4..40, :if => :password_required?
+  validates_length_of       :password, :within => 5..20, :if => :password_required?
   validates_confirmation_of :password,                   :if => :password_required?
   validates_length_of       :login,    :within => 3..40
-  validates_length_of       :email,    :within => 5..100
+  validates_length_of       :email,    :within => 5..55
   validates_uniqueness_of   :login, :email, :case_sensitive => false
+
   before_save :encrypt_password
 
   # prevents a user from submitting a crafted form that bypasses activation
@@ -64,17 +66,22 @@ class User < ActiveRecord::Base
     save(false)
   end
 
+  # TODO: maybe inherit new user from this class?
+  def participates_event?(evt_id)
+    eid = evt_id.to_i
+    eid != 0 && self.event_ids.include?(eid)
+  end
+
   protected
-    # before filter
-    def encrypt_password
-      return if password.blank?
-      self.salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--") if new_record?
-      self.crypted_password = encrypt(password)
-    end
 
-    def password_required?
-      crypted_password.blank? || !password.blank?
-    end
+  # before filter
+  def encrypt_password
+    return if password.blank?
+    self.salt = Digest::SHA1.hexdigest("#{$$}#{Time.now}#{login}") if new_record?
+    self.crypted_password = encrypt(password)
+  end
 
-
+  def password_required?
+    crypted_password.blank? || !password.blank?
+  end
 end

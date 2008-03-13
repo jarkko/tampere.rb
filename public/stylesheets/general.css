@@ -26,7 +26,7 @@ html, body {
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size:   11pt;
+  font-size:   9pt;
   line-height: 18px;
 }
 
@@ -40,7 +40,7 @@ body, p, ol, ul, td {
 pre {
   background-color: #eee;
   padding: 10px;
-  font-size: 10pt;
+  font-size: 9pt;
 }
 
 #user_login { padding: 0.25em; }
@@ -76,7 +76,7 @@ a:hover { background-color: #fffdff; }
   margin: -7px;
   background-color: #c00;
   color: #fff;
-  font-size: 11pt;
+  font-size: 9pt;
 }
 
 #errorExplanation p {
@@ -111,14 +111,14 @@ div.progressBar div.background {
 
 /* custom stuff */
 
-h1 { font-size: 160%; }
+h1 { font-size: 180%; }
 h2 {
-  font-size: 140%;
+  font-size: 160%;
   color: #7e6f48;
   background: #b9bd9c;
   padding: 0.25em 1.0em 0.5em 1.0em;
 }
-h3 { font-size: 120%; }
+h3 { font-size: 140%; }
 
 #banner {
   float: left;
@@ -126,14 +126,14 @@ h3 { font-size: 120%; }
   color: #4f2f2f;
 }
 
-#banner .flash { margin-left: 11em;  }
+#banner .flash { margin-left: 10em;  }
 #banner h1 { margin-top: 0.75em; }
 
 #logo_image { float: left; margin-top: 0em; margin-right: 1em; }
 
-table {  width: 100%; }
+table { width: 100%; }
 th { text-align: left; }
-th { text-align: left; padding-bottom: 1.5em; }
+th { text-align: left; padding-bottom: 0.5em; }
 
 .add_new, modify {
   float: right;
@@ -174,32 +174,40 @@ th { text-align: left; padding-bottom: 1.5em; }
   clear: both;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
-  padding-left: 0.5em;
+  padding-left: 0em;
   margin-bottom: 0;
   width: 100%;
   font-weight: bold;
   border-top: solid 2px #8a2628;
 }
 
-.list td { vertical-align: top; padding-right: 4em; }
-.list tr.upcoming td { padding-bottom: 1em; }
-.list tr.past td { padding-top: 1em; font-style: italic; }
-
-
 #login_menu {
   float: right;
   text-align: right;
-  font-size: 8pt;
+  font-size: 7pt;
   margin-top: 1em;
 }
 
-#credentials input[type=text], #credentials input[type=password] { 
-  margin-left: 0.5em; 
+#credentials input[type=text],
+#credentials input[type=password],
+#credentials input[type=submit] {
+  margin-left: 0.5em;
+  margin-top: 0.5em;
   width: 6em;
 }
-#credentials label { 
-   position: relative; 
-   text-align: right; 
-   width: 6em; 
+
+#credentials label {
+   position: relative;
+   text-align: right;
+   width: 6em;
    margin-right: 0.5em;
 }
+
+form.button-to { display: inline; }
+form.button-to div { display: inline; }
+
+#back_link { margin-top: 4em; }
+
+#rails_link { float: left; }
+#w3c_logo { float: right;  }
+#w3c_logo img { border: 0; }
