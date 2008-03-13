@@ -1,15 +1,9 @@
-#new_user label, #new_user input {
+#new_user label, #new_user input[type=text] {
     display: block;
-    width: 120pt;
+    width: 140pt;
     float: left;
     font-size: 9pt;
     margin-bottom: 0.5em;
-}
-
-#new_user input[type=text],
-#new_user input[type=password],
-#new_user input[type=submit] {
-  margin-left: 0.5em;
 }
 
 #new_user label {
