@@ -52,6 +52,7 @@ describe User do
   end
 
   it 'authenticates user' do
+    User.should_receive(:find_by_login).with('bob').and_return(@bob)
     warn "hits database, use mocks/stubs instead"
     @bob.save!
     User.authenticate('bob', @bob_password).should == @bob
@@ -99,7 +100,7 @@ describe User do
 protected
   def build_user(options = {})
     returning User.new({ :login => 'user_login',
-                         :email => 'user@@example.com',
+                         :email => 'user@example.com',
                          :password => 'some_password',
                          :password_confirmation => 'some_password'
                        }.merge(options)) do |u|
