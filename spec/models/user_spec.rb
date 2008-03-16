@@ -41,7 +41,8 @@ describe User do
   end
 
   it 'resets password' do
-    @bob.update_attributes(:password => 'new password', :password_confirmation => 'new password')
+    @bob.update_attributes(:password => 'new password',
+                           :password_confirmation => 'new password')
     User.authenticate('bob', 'new password').should == @bob
   end
 

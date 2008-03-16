@@ -5,18 +5,14 @@ require File.dirname(__FILE__) + '/../spec_helper'
 include AuthenticatedTestHelper
 
 describe UsersController do
-  fixtures :users
 
   it 'allows signup' do
-    lambda do
-      create_user
-      response.should be_redirect      
-    end.should change(User, :count).by(1)
+    user = mock(:user, :id => :any)
+    user.should_receive(:save).once.and_return(true)
+    User.stub!(:new).and_return(user)
+    create_user
+    response.should be_redirect
   end
-
-  
-
-  
 
   it 'requires login on signup' do
     lambda do
@@ -25,7 +21,7 @@ describe UsersController do
       response.should be_success
     end.should_not change(User, :count)
   end
-  
+
   it 'requires password on signup' do
     lambda do
       create_user(:password => nil)
@@ -33,7 +29,7 @@ describe UsersController do
       response.should be_success
     end.should_not change(User, :count)
   end
-  
+
   it 'requires password confirmation on signup' do
     lambda do
       create_user(:password_confirmation => nil)
@@ -49,9 +45,7 @@ describe UsersController do
       response.should be_success
     end.should_not change(User, :count)
   end
-  
-  
-  
+
   def create_user(options = {})
     post :create, :user => { :login => 'quire', :email => 'quire@example.com',
       :password => 'quire', :password_confirmation => 'quire' }.merge(options)
