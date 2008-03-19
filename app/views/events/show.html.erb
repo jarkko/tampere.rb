@@ -18,7 +18,7 @@
 
     <div id="participants">
       <strong>Osallistujat:</strong>
-      <%= @event.users.map(&:login).sort_by {|login| login.downcase}.to_sentence %>
+      <%= show_users(@event.users) %>
       (<%= @event.users.size %>)
     </div>
   </div>
