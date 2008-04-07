@@ -13,6 +13,6 @@
 </p>
 
 <p>
-  <%= link_to 'Muokkaa', edit_location_path(@location) %> |
+  <%= link_to 'Muokkaa', edit_location_path(@location) if logged_in? %> |
   <%= link_to 'Näytä sijainnit', locations_path %>
 </p>

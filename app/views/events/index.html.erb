@@ -1,6 +1,6 @@
 <div id="event_list">
   <span class="add_new">
-    <%= link_to 'Lisää uusi', new_event_path %>
+    <%= link_to 'Lisää uusi', new_event_ph if logged_in? %>
   </span>
 
   <% first_heading = @coming_events.empty? ? 'Menneet tapahtumat' : 'Tulevat tapahtumat' %>

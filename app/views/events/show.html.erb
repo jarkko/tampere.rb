@@ -1,9 +1,9 @@
 <div id="event_display">
-  <span class="add_new">
-    <%= link_to 'Lisää uusi', new_event_path %> |
+  <% content_tag(:span, :class => "add_new") do %>
+    <%= link_to('Lisää uusi', new_event_path) %> |
     <%= link_to 'Muokkaa', edit_event_path(@event) %> |
     <%= link_to 'Poista', event_path(@event), :method => :delete %>
-  </span>
+  <% end if logged_in? %>
   <h2>
     <%= fmt_date(@event.date) %>
   </h2>
