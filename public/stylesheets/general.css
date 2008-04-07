@@ -43,10 +43,8 @@ pre {
   font-size: 9pt;
 }
 
-#user_login { padding: 0.25em; }
 a {
   color: #475a22; /* green */
-  padding: 0.25em;
   font-weight: bold;
   text-decoration: none;
 }
