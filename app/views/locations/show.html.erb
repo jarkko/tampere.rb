@@ -1,16 +1,14 @@
-<p>
+<div>
 
   <b>Sijanti:</b>
-  <%= @location.title %>
+  <p>
+  <%= @location.title %><br/>
+  <%=h @location.address %> 
   <% unless @location.google_maps.blank? %>
-    , <%= link_to 'kartta', @location.google_maps %>
+    , <%= link_to 'kartta ->', @location.google_maps %>
   <% end %>
-</p>
-
-<p>
-  <b>Osoite:</b>
-  <%=h @location.address %>
-</p>
+  </p>  
+</div>
 
 <p>
   <%= link_to 'Muokkaa', edit_location_path(@location) if logged_in? %> |

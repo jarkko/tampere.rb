@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
 
+  # TODO: authenticated users can remove other users
+  # before_filter :login_required, :only => [:update, :delete]
+
   # render new.rhtml
   def new
   end
