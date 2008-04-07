@@ -13,4 +13,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # :secret => '977b7fdc480cc59a1d50a76ae5e68df6'
   
   CalendarDateSelect.format = :finnish
+
+  # override default access_denied method
+  def access_denied
+    flash[:notice] = 'Login required, please register or login'
+    redirect_to events_path
+  end
 end
