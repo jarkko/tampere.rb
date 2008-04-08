@@ -20,11 +20,6 @@
     <tr class="<%= cycle('even', 'odd') %> upcoming">
       <td><%= link_to fmt_date(evt.date), evt %></td>
       <td><%= truncate(evt.description, 160) %></td>
-      <!--    <td><%= link_to 'Muokkaa', edit_event_path(evt) %></td>
-              <td><%= link_to('Poista',
-                      evt,
-                      :confirm => confirm_msg,
-                :method => :delete) %></td> -->
       <td><%= evt.location.title %></td>
       <td>
         <%= evt.registered_count %>
