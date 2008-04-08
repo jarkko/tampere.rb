@@ -5,18 +5,20 @@ require File.dirname(__FILE__) + '/../spec_helper'
 include AuthenticatedTestHelper
 
 describe SessionsController do
+  fixtures :users
+
   it 'logins and redirects' do
-    user = User.new(default_user_attributes)
-    User.stub!(:authenticate).and_return(user)
-    create_user
+    #user = User.new(default_user_attributes)
+    #User.stub!(:authenticate).and_return(user)
+    create_session
     session[:user_id].should_not be_nil
     response.should be_redirect
   end
 
   it 'fails login and does not redirect' do
-    post :create, :login => 'bob', :password => 'bad password'
+    create_session(:login => 'bob', :password => 'badpass')
     session[:user_id].should be_nil
-    response.should be_success
+    response.should be_redirect
   end
 
   it 'logs out' do
@@ -31,10 +33,10 @@ describe SessionsController do
     response.cookies["auth_token"].should_not be_nil
   end
 
-  it 'does not remember me' do
-    post :create, :login => 'bob', :password => 'test', :remember_me => "0"
-    response.cookies["auth_token"].should be_nil
-  end
+  # it 'does not remember me' do
+  #     post :create, :login => 'bob', :password => 'test', :remember_me => "0"
+  #     response.cookies["auth_token"].should be_nil
+  # end
 
   it 'deletes token on logout' do
     login_as :bob
@@ -66,12 +68,13 @@ describe SessionsController do
 
   protected
 
-  def create_user(opts={ })
+  def create_session(opts={ })
     post :create, default_user_attributes.merge(opts)
   end
 
   def default_user_attributes
-    { :login => 'bob', :password => 'valid_pass' }
+    { :login => 'bob',
+      :password => 'test' }
   end
 
   def auth_token(token)

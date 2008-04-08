@@ -6,10 +6,10 @@ include AuthenticatedTestHelper
 
 describe User do
   before(:each) do
-    @bob_password = 'mypass'
-    @bob = build_user(:login => 'bob',
-                      :password => @bob_password,
-                      :password_confirmation => @bob_password)
+    @joe_password = 'mypass'
+    @joe = build_user(:login => 'joe',
+                      :password => @joe_password,
+                      :password_confirmation => @joe_password)
   end
 
   it 'requires login' do
@@ -41,64 +41,69 @@ describe User do
   end
 
   it 'resets password' do
-    @bob.update_attributes(:password => 'new password',
+    @joe.update_attributes(:password => 'new password',
                            :password_confirmation => 'new password')
-    User.authenticate('bob', 'new password').should == @bob
+    User.authenticate('joe', 'new password').should == @joe
   end
 
   it 'does not rehash password when authenticating' do
-    warn "hits database, use mocks/stubs instead"
-    @bob.update_attributes(:login => 'bob2')
-    User.authenticate('bob2', @bob_password).should == @bob
+    warn_of_db_access
+    @joe.update_attributes(:login => 'joe2')
+    User.authenticate('joe2', @joe_password).should == @joe
   end
 
   it 'authenticates user' do
-    User.should_receive(:find_by_login).with('bob').and_return(@bob)
-    warn "hits database, use mocks/stubs instead"
-    @bob.save!
-    User.authenticate('bob', @bob_password).should == @bob
+    User.should_receive(:find_by_login).with('joe').and_return(@joe)
+    warn_of_db_access
+    @joe.save!
+    User.authenticate('joe', @joe_password).should == @joe
   end
 
   it 'sets remember token' do
-    @bob.remember_me
-    @bob.remember_token.should_not be_nil
-    @bob.remember_token_expires_at.should_not be_nil
+    @joe.remember_me
+    @joe.remember_token.should_not be_nil
+    @joe.remember_token_expires_at.should_not be_nil
   end
 
   it 'unsets remember token' do
-    @bob.remember_me
-    @bob.remember_token.should_not be_nil
-    @bob.forget_me
-    @bob.remember_token.should be_nil
+    @joe.remember_me
+    @joe.remember_token.should_not be_nil
+    @joe.forget_me
+    @joe.remember_token.should be_nil
   end
 
   it 'remembers me for one week' do
     before = 1.week.from_now.utc
-    @bob.remember_me_for 1.week
+    @joe.remember_me_for 1.week
     after = 1.week.from_now.utc
-    @bob.remember_token.should_not be_nil
-    @bob.remember_token_expires_at.should_not be_nil
-    @bob.remember_token_expires_at.between?(before, after).should be_true
+    @joe.remember_token.should_not be_nil
+    @joe.remember_token_expires_at.should_not be_nil
+    @joe.remember_token_expires_at.between?(before, after).should be_true
   end
 
   it 'remembers me until one week' do
     time = 1.week.from_now.utc
-    @bob.remember_me_until time
-    @bob.remember_token.should_not be_nil
-    @bob.remember_token_expires_at.should_not be_nil
-    @bob.remember_token_expires_at.should == time
+    @joe.remember_me_until time
+    @joe.remember_token.should_not be_nil
+    @joe.remember_token_expires_at.should_not be_nil
+    @joe.remember_token_expires_at.should == time
   end
 
   it 'remembers me default two weeks' do
     before = 2.weeks.from_now.utc
-    @bob.remember_me
+    @joe.remember_me
     after = 2.weeks.from_now.utc
-    @bob.remember_token.should_not be_nil
-    @bob.remember_token_expires_at.should_not be_nil
-    @bob.remember_token_expires_at.between?(before, after).should be_true
+    @joe.remember_token.should_not be_nil
+    @joe.remember_token_expires_at.should_not be_nil
+    @joe.remember_token_expires_at.between?(before, after).should be_true
   end
 
 protected
+
+  def warn_of_db_access
+    warn "warning: this test hits the database, maybe use mocks instead?"
+  end
+
   def build_user(options = {})
     returning User.new({ :login => 'user_login',
                          :email => 'user@example.com',
