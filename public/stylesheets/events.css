@@ -11,5 +11,5 @@ tr.past { padding-top: 0.5em; color: #777; }
 
 #program_details { margin-top: 2em; width: 100%; margin-bottom: 2em; }
 #program { float: left; position: relative; width: 60%; }
-#participants { float: right; position: relative; width: 40%; }
 #event_display { width: 100%; min-height: 10em; }
+

@@ -3,25 +3,27 @@
 
 <%= error_messages_for :event %>
 <% @event.location = nil %>
+
 <% form_for(@event) do |f| %>
-  <p>
+  <div>
     <%= f.label(:date, 'Päivämäärä:') %>
     <%= f.calendar_date_select :date, :time => false %>
-  </p>
-  <p>
+  </div>
+
+  <div>
     <b>Sijainti:</b>
     <%= f.select 'location_id', Location.find(:all).map { |loc| [loc.title, loc.id] } %>
     tai lisää uusi: <%= f.text_field :location %>
-  </p>
+  </div>
 
-  <p>
+  <div>
     <b>Ohjelma:</b><br />
     <%= f.text_area :description, :cols => 80, :rows => 10 %>
-  </p>
+  </div>
 
-  <p>
+  <div>
     <%= f.submit "Tallenna" %>
-  </p>
+  </div>
 <% end %>
 
 <%= link_to 'Tapahtumat', events_path %>

@@ -1,12 +1,38 @@
-#new_user label, #new_user input[type=text] {
-    display: block;
-    width: 140pt;
-    float: left;
-    margin-bottom: 0.5em;
+#new_user label,
+#new_user input[type=text],
+#new_user input[type=password]
+{
+  display: block;
+  width: 95pt;
+  float: left;
+  margin-bottom: 0.5em;
 }
 
-#new_user label {
-  text-align: left;
+#new_user input[type=text],
+#new_user input[type=password]
+{
+  width: 120pt;
 }
 
-#new_user br {  clear: left; }
+#new_user br { clear: left; }
+
+.aligned
+{
+  display: block;
+  width: 70pt;
+  float: left;
+  margin-bottom: 0.5em;
+}
+
+input.aligned
+{
+  width: 100pt;
+}
+textarea.aligned
+{
+  width: 540pt;
+}
+
+form br { clear: left; }
+
+

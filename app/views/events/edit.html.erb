@@ -3,25 +3,25 @@
 <%= error_messages_for :event %>
 
 <% form_for(@event) do |f| %>
-  <p>
-    <b>Ohjelma</b><br />
-    <%= f.text_area :description, :rows => 8, :cols => 80 %>
-  </p>
+<div>
+  <%= f.label(:date, 'Päivämäärä:', :class => 'aligned') %>
+  <%= f.calendar_date_select :date, :time => false, :class => 'aligned' %><br/>
 
-  <p>
-    <b>Päivämäärä</b><br />
-    <%= f.date_select :date %>
-  </p>
+  <%= f.label(:location_id, 'Sijainti:', :class => 'aligned') %>
+  <%= f.select 'location_id',
+      Location.find(:all).map { |loc| [loc.title, loc.id] },
+      {}, :class => 'aligned' %><br/>
 
-  <p>
-    <b>Sijainti</b> (+ mahku lisätä uusia)<br />
-    <%= f.select 'location_id', Location.find(:all).map { |loc| [loc.title, loc.id] } %>
-  </p>
+  <%= f.label(:description, 'Ohjelma:', :class => 'aligned') %><br/>
+  <%= f.text_area :description, :rows => 8, :cols => 80,
+                  :class => 'aligned' %><br/>
+</div>
 
-  <p>
-    <%= f.submit "Päivitä" %>
-  </p>
+
+<p>
+  <%= f.submit "Päivitä" %>
+</p>
 <% end %>
 
-<%= link_to 'Näytä', @event %> |
-<%= link_to 'Takaisin tapahtumiin', events_path %>
+<%= link_to '<- Takaisin tapahtumiin', events_path %> |
+<%= link_to 'Näytä', @event %>

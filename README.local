@@ -2,6 +2,7 @@ This project uses the following externals components not checked out
 with svn externals:
 
 - RedCloth gem for textile output
+- hpricot (don't remember why)
 
 
 

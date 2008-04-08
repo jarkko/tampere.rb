@@ -7,23 +7,24 @@
   <h2>
     <%= fmt_date(@event.date) %>
   </h2>
-  <%= if @event.location; link_to @event.location.title, @event.location; end %>
+  <%= link_to @event.location.title, @event.location if @event.location %>
   18.30 - 21.00
 
   <div id="program_details">
-    <div id="program">
-      <strong>Ohjelma:</strong>
-      <%= RedCloth.new(@event.description).to_html %>
-    </div>
-
-    <div id="participants">
-      <strong>Osallistujat:</strong>
+    <div id="participants" class="tidbit">
+      Osallistujat:
       <%= show_users(@event.users) %>
       (<%= @event.users.size %>)
     </div>
+
+    <h3>Ohjelma:</h3>
+    <div id="program">
+      <%= format_event(@event) %>
+    </div>
+
   </div>
 </div>
 
-<div id="back_link">
-  <%= link_to 'Takaisin tapahtumiin', events_path %>
-</div>
+<p id="back_link">
+  <%= link_to '<- Takaisin tapahtumiin', events_path %>
+</p>

@@ -5,8 +5,6 @@
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title>Tampere.rb</title>
-    <% # stylesheet_link_tag :all, :cache => true %>
-    <% # javascript_include_tag :all, :cache => true %>
     <%= stylesheet_link_tag :all, :cache => false %>
     <%= javascript_include_tag :all, :cache => false %>
 
@@ -44,10 +42,10 @@
         <% else %>
           <div id="credentials">
                 <% form_tag session_path do -%>
-                  <label for="login">Käyttäjätunnus</label>
+                  <label for="login">Käyttäjätunnus:</label>
                   <%= text_field_tag 'login' %><br/>
 
-                 <label for="password">Salasana</label>
+                 <label for="password">Salasana:</label>
                   <%= password_field_tag 'password' %><br/>
           <%= link_to('Rekisteröidy', "/users/new") %> |  <%= submit_tag 'Kirjaudu' %>
                 <% end -%>
@@ -59,7 +57,7 @@
     <div id="main">
       <div id="menu">
         <span id="events"><%= link_to 'Tapahtumat', events_path %></span> |
-        <span id="archive"><%= link_to 'Arkisto', archived_events_path %></span> |
+        <span id="archive"><%= link_to 'Arkisto', archived_events_path %></span>
         <!-- <span id="members"><%= link_to 'Jäsenet', users_path %></span> -->
       </div>
 

@@ -1,13 +1,16 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe Event do
-  it "can build a default event" do
-    Event.new_default
-  end
 
-  it "default events have date in future" do
-    evt = Event.new_default
-    evt.date > Date.today
+  describe "default" do
+    it "can build a default event" do
+      Event.new_default
+    end
+
+    it "has defaults date in future" do
+      evt = Event.new_default
+      evt.date > Date.today
+    end
   end
 
   it "can find most recent event" do

@@ -2,6 +2,7 @@
 
 /* streamlined colors
 yellow bg: ffe29e
+yellow: ffff9e
 red: 8a2628
 white: fffdff
 green: 475a22
@@ -17,11 +18,11 @@ body { background-color: #ffe29e; /* yellow */
        /* background-image: url("/images/logo_background2.png");
        background-repeat: repeat-x; */
        color: #000;
-       width: 95%;
+       width: 98%;
 }
 
 html, body {
-  height: 90%;
+  height: 95%;
 }
 
 body, p, ol, ul, td {
@@ -30,15 +31,11 @@ body, p, ol, ul, td {
   line-height: 18px;
 }
 
-#notice {
-  color: black;
-  background-color: #9c9966;
-  font-weight: bold;
-  padding: 0.25em 1.5em 0.5em 1.5em;
-}
+td { vertical-align: top; }
+
 
 pre {
-  background-color: #eee;
+  background-color: #ffffe9;
   padding: 10px;
   font-size: 9pt;
 }
@@ -49,8 +46,29 @@ a {
   text-decoration: none;
 }
 
+a.external {
+  text-decoration: underline;
+}
+
+
 a:visited {  }
 a:hover { background-color: #fffdff; }
+
+h1 { font-size: 160%; }
+h2 {
+  font-size: 140%;
+  color: #7e6f48;
+  background: #b9bd9c;
+  padding: 0.25em 0.5em 0.25em 0.5em;
+}
+h3 { font-size: 125%; margin-top: 0.5em; }
+
+#notice {
+  color: black;
+  background-color: #9c9966;
+  font-weight: bold;
+  padding: 0.25em 1.5em 0.5em 1.5em;
+}
 
 .fieldWithErrors {
   padding: 2px;
@@ -107,16 +125,6 @@ div.progressBar div.background {
   width: 0%;
 }
 
-/* custom stuff */
-
-h1 { font-size: 180%; }
-h2 {
-  font-size: 160%;
-  color: #7e6f48;
-  background: #b9bd9c;
-  padding: 0.25em 1.0em 0.5em 1.0em;
-}
-h3 { font-size: 140%; }
 
 #banner {
   float: left;
@@ -130,13 +138,13 @@ h3 { font-size: 140%; }
 #logo_image { float: left; margin-top: 0em; margin-right: 1em; }
 
 table { width: 100%; }
-th { text-align: left; }
 th { text-align: left; padding-bottom: 0.5em; }
 
-.add_new, modify {
+.add_new, .modify
+{
   float: right;
-   margin-right: 1.5em;
-   margin-top: 0.5em;
+  margin-right: 1.5em;
+  margin-top: 0.5em;
 }
 
 .add_new, .add_new a {
@@ -144,17 +152,19 @@ th { text-align: left; padding-bottom: 0.5em; }
   font-weight: bold;
 }
 
-.add_new a:hover, .add_new a:hover { background-color: #475a22; }
+.add_new a:hover { background-color: #475a22; }
 
-
-#menu {
-    clear: both;
-    padding-top: 2em;
-    width: 100%;
+#menu
+{
+  clear: both;
+  padding-top: 2em;
+  width: 100%;
 }
 
-#content { float: left;
-  margin-top: 2em;
+#content
+{
+  float: left;
+  margin-top: 0em;
   margin-left: 0em;
   width: 100%;
   min-height: 100%;
@@ -183,15 +193,7 @@ th { text-align: left; padding-bottom: 0.5em; }
   float: right;
   text-align: right;
   font-size: 7pt;
-  margin-top: 1em;
-}
-
-#credentials input[type=text],
-#credentials input[type=password],
-#credentials input[type=submit] {
-  margin-left: 0.5em;
   margin-top: 0.5em;
-  width: 6em;
 }
 
 #credentials label {
@@ -199,6 +201,14 @@ th { text-align: left; padding-bottom: 0.5em; }
    text-align: right;
    width: 6em;
    margin-right: 0.5em;
+}
+
+#credentials input[type=text],
+#credentials input[type=password],
+#credentials input[type=submit] {
+  margin-left: 0em;
+  margin-top: 0.25em;
+  width: 6em;
 }
 
 form.button-to { display: inline; }
@@ -209,3 +219,22 @@ form.button-to div { display: inline; }
 #rails_link { float: left; }
 #w3c_logo { float: right;  }
 #w3c_logo img { border: 0; }
+
+p.clearing { clear: both; margin-top: 3em;}
+
+input:focus,
+select:focus
+{
+  background-color: #ffff9e;
+}
+
+.tidbit
+{
+  float: right;
+  position: relative;
+  width: 25%;
+  margin-right: 0em;
+  margin-left: 2em;
+  padding: 1em;
+  background-color: #ffff9e;
+}

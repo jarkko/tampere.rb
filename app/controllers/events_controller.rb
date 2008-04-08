@@ -1,14 +1,14 @@
 class EventsController < ApplicationController
-  before_filter :login_required, :only => [:new, 
-    :edit, 
-    :create, 
-    :update, 
+  before_filter :login_required, :only => [:new,
+    :edit,
+    :create,
+    :update,
     :destroy]
 
   # GET /events
   # GET /events.xml
   def index
-    events = Event.find_recent(4)
+    events = Event.find_recent(5)
     now = Time.now
     @coming_events, @past_events = events.partition { |e| e.date >= now }
 
@@ -62,18 +62,18 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.xml
   def create
-#     unless params[:event]['location'].blank?
-#       params[:event].delete('location_id')
-#       params[:event]['location'] = Location.new(:title => params[:event]['location'])
-#     else
-#       params[:event].delete('location')
-#     end
-    set_location_param(params[:event])
+    attrs = params[:event]
+    attrs['location'] = Location.find_by_id_or_build_by_name(attrs)
 
-    @event = Event.new(params[:event])
+
+    # attr location already contains loc, so we omit loc_id
+    # TODO: even better, move to model
+    @event = Event.new(attrs.reject { |k,v| k == 'location_id' })
+
     # TODO: move this elsewhere.. besides, it should be done automatically
     # for all date parsing
     @event.date = Date.strptime(params[:event]['date'], '%d.%m.%Y')
+
     respond_to do |format|
       if @event.save
         flash[:notice] = 'Tapahtuma luotu.'
@@ -81,7 +81,8 @@ class EventsController < ApplicationController
         # format.xml  { render :xml => ... }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @event.errors,
+                             :status => :unprocessable_entity }
       end
     end
   end
@@ -121,11 +122,11 @@ class EventsController < ApplicationController
   end
 
   private
-  def set_location_param(hsh)
-    loc_name = hsh['location']
-    hsh['location'] =
-      loc_name.blank? ? Location.find(hsh['location_id']) :
-                        Location.new(:title => loc_name)
-    hsh.delete('location_id')
-  end
+#   def set_location_param(hsh)
+#     loc_name = hsh['location']
+#     hsh['location'] =
+#       loc_name.blank? ? Location.find(hsh['location_id']) :
+#                         Location.new(:title => loc_name)
+#     hsh.delete('location_id')
+#   end
 end
