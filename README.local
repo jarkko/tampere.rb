@@ -3,6 +3,8 @@ with svn externals:
 
 - RedCloth gem for textile output
 - hpricot (don't remember why)
+- ruby-openid gem
+
 
 
 
