@@ -63,8 +63,8 @@ class EventsController < ApplicationController
   # POST /events.xml
   def create
     attrs = params[:event]
-    attrs['location'] = Location.find_by_id_or_build_by_name(attrs)
-
+    attrs['location'] = Location.find_by_id_or_build_by_name(attrs['location'],
+                                                             attrs['location_id'])
 
     # attr location already contains loc, so we omit loc_id
     # TODO: even better, move to model
