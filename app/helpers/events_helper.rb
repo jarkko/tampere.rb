@@ -3,8 +3,15 @@ module EventsHelper
     dob.strftime("%d.%m.%Y")
   end
 
+  def preview_users(evt)
+    users = evt.users
+    names = users.map {|u| u.login}.to_sentence(:connector => 'ja')
+    count = names.empty? ? '-' : "(#{users.size})"
+    [names, count].join(" ")
+  end
+
   def show_users(users)
-    users.map {|u| u.login}.to_sentence(:connector => 'ja')
+    content_tag(:ul, users.sort_by { |u| u.login.downcase }.map {|u| "<li>#{u.login}</li>"}.join)
   end
 
   def format_event(evt)
@@ -12,5 +19,9 @@ module EventsHelper
   rescue Exception => e
     warn "RedCloth not installed!"
     evt.description
+  end
+
+  def preview_event(evt)
+    truncate(evt.description, 80)
   end
 end

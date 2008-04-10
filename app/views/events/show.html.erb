@@ -12,9 +12,8 @@
 
   <div id="program_details">
     <div id="participants" class="tidbit">
-      Osallistujat:
+      Osallistujat (<%= @event.users.size %>):
       <%= show_users(@event.users) %>
-      (<%= @event.users.size %>)
     </div>
 
     <h3>Ohjelma:</h3>
@@ -25,6 +24,6 @@
   </div>
 </div>
 
-<p id="back_link">
+<p class="clearing" id="back_link">
   <%= link_to '<- Takaisin tapahtumiin', events_path %>
 </p>

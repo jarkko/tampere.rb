@@ -19,12 +19,11 @@
     <% confirm_msg = "Oletko varma, että haluat poistaa #{fmt_date(evt.date)} tapahtuman?" %>
     <tr class="<%= cycle('even', 'odd') %> upcoming">
       <td><%= link_to fmt_date(evt.date), evt %></td>
-      <td><%= truncate(evt.description, 160) %></td>
-      <td><%= evt.location.title %></td>
+      <td><%= preview_event(evt) %></td>
+      <td><%= link_to evt.location.title, location_path(evt.location) %></td>
       <td>
-        <%= evt.registered_count %>
+        <%= preview_users(evt) %>
         <% unless (current_user.participates_event?(evt.id) rescue true) %>
-
             <%= button_to('Ilmoittaudu',
                           :id => evt.id,
                           :user_id => current_user.id,
@@ -46,7 +45,7 @@
     <% @past_events.each do |evt| %>
     <tr class="<%= %> <%= cycle('even', 'odd') %> past %>">
       <td><%= link_to fmt_date(evt.date), evt %></td>
-      <td><%= truncate(evt.description, 160) %></td>
+      <td><%= preview_event(evt) %></td>
       <td><%= evt.location.title %></td>
       <td><%= evt.registered_count %></td>
     </tr>
