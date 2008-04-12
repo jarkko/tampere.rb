@@ -1,6 +1,12 @@
-- allow mods only for registered users
-- show who last edited the file
-- make event data versioned
+TO BE DONE:
 
-- openid login?
+- add roles for registered users (member, admin), allow CRUD for admins only
+- show who last edited the object and when
+- add something FUN! Roster rankings? top attendees?
+- add separate event notes from event description, so that registered users can
+  check afterwards what happened
+- openid login
 
+FINISHED:
+
+- allow CRUD for registered users only
