@@ -60,3 +60,4 @@ Rails::Initializer.run do |config|
 end
 
 CalendarDateSelect.format = :finnish
+require 'european_date'

@@ -62,17 +62,15 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.xml
   def create
+    # TODO: this is a bit too hackish, and deals too much with handling attributes
+    # -> move to model
+    
     attrs = params[:event]
     attrs['location'] = Location.find_by_id_or_build_by_name(attrs['location'],
                                                              attrs['location_id'])
-
+    attrs['date'] = EuropeanDate.to_iso(attrs['date'])
     # attr location already contains loc, so we omit loc_id
-    # TODO: even better, move to model
-    @event = Event.new(attrs.reject { |k,v| k == 'location_id' })
-
-    # TODO: move this elsewhere.. besides, it should be done automatically
-    # for all date parsing
-    @event.date = Date.strptime(params[:event]['date'], '%d.%m.%Y')
+        @event = Event.new(attrs.reject { |k,v| k == 'location_id' })
 
     respond_to do |format|
       if @event.save
@@ -91,8 +89,10 @@ class EventsController < ApplicationController
   # PUT /events/1.xml
   def update
     @event = Event.find(params[:id])
-
+    
     respond_to do |format|
+      # TODO: belongs to Event#update_from_form?
+      params[:event]['date'] = EuropeanDate.to_iso(params[:event]['date'])
       if @event.update_attributes(params[:event])
         flash[:notice] = 'Tapahtuma päivitetty.'
         format.html { redirect_to(@event) }
