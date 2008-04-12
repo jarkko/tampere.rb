@@ -11,19 +11,19 @@
   </div>
 
   <div>
-    <b>Sijainti:</b>
+    <%= f.label(:location_id, 'Sijainti:') %>
     <%= f.select 'location_id', Location.find(:all).map { |loc| [loc.title, loc.id] } %>
     tai lisää uusi: <%= f.text_field :location %>
   </div>
 
   <div>
-    <b>Ohjelma:</b><br />
+    <%= label(:description, 'Ohjelma:') %><br/>
     <%= f.text_area :description, :cols => 80, :rows => 10 %>
   </div>
 
-  <div>
+  <p class="clearing">
     <%= f.submit "Tallenna" %>
-  </div>
+  </p>
 <% end %>
 
 <%= link_to 'Tapahtumat', events_path %>
