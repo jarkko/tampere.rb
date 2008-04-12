@@ -57,10 +57,13 @@ describe EventsController do
       response.should be_success
     end    
     
-    xit "should be able to update an event" do
-      evt = mock('event', :id => 1, :description => 'desc',
-                 :date => Date.today, :location_id => 1)
-      put :update, { :id => 1, :description => 'modified' }
+    it "should be able to update an event" do
+      evt = mock_model(Event, :description => 'desc',
+                       :date => Date.today, :location_id => 1)
+      Event.should_receive(:find).with("1").and_return(evt)
+      params = { 'description' => 'modified' }
+      evt.should_receive(:update_attributes).with(params).and_return(true)
+      put :update, :id => 1, :event => params
       flash[:notice].should_not be_nil
     end
   end # registered users
