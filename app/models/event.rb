@@ -4,6 +4,8 @@ class Event < ActiveRecord::Base
   has_many :participations
   has_many :users, :through => :participations
 
+  attr_protected :role
+
   validates_presence_of :date, :message => "päiväys puuttuu"
   validates_uniqueness_of :date, :message => 'päiväys jo käytetty'
   validates_presence_of :description, :message => 'ohjelman sisältö puuttuu'
