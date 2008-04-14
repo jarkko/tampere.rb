@@ -32,6 +32,15 @@ class Event < ActiveRecord::Base
     self.find(event_id).participations.create(:user_id => user_id)
   end
 
+  def self.send_reminders_if_needed(days_before)
+    evt = Event.find_upcoming
+    return nil unless evt && evt.days_to <= days_before
+
+    evt.attendees.each do |user|
+      user.remind_of(evt) unless user.reminder_sent(evt)
+    end
+  end
+
   #
   # Instance methods
   #

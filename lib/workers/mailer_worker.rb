@@ -6,11 +6,7 @@ class MailerWorker < BackgrounDRb::MetaWorker
   end
   
   def remind_about_coming_event
-    # evt = Event.find_upcoming
-    # return nil unless evt && evt.days_to <= 7
-    # evt.attendees.each do |user|
-    #   user.remind_of(evt) unless user.reminder_sent(evt)
-    # end
+    #Event.send_reminders_if_needed(days_before=7)
   end
 end
 

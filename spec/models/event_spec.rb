@@ -22,4 +22,6 @@ describe Event do
     evt.stub!(:participations).and_return(['joe', 'jack', 'alice'])
     evt.registered_count.should == 3
   end
+  
+  it "send_reminders_if_needed(days)"
 end
