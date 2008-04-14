@@ -217,8 +217,8 @@ form.button-to div { display: inline; }
 #back_link { margin-top: 4em; }
 
 #rails_link { float: left; }
-#w3c_logo { float: right;  }
-#w3c_logo img { border: 0; }
+.footer_icon { float: right;  }
+.footer_icon img { border: 0; }
 
 p.clearing { clear: both; margin-top: 3em;}
 
