@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
   belongs_to :location
 
   has_many :participations
-  has_many :users, :through => :participations
+  has_many :attendees, :through => :participations, :source => :user
 
   attr_protected :role
 
@@ -37,7 +37,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.register_user(event_id, user_id)
-    self.find(event_id).participations.create(:user_id => user_id)
+    self.find(event_id).attendees.create(:user_id => user_id)
   end
 
   def self.send_reminders_if_needed(days_before)
@@ -54,14 +54,12 @@ class Event < ActiveRecord::Base
   #
 
   def registered_count
-    self.participations.size
+    self.attendees.size
   end
 
   def days_to
     (self.date.to_date - Time.now.to_date).to_i
   end
-
-  alias :participants :attendees
   
   private
 
