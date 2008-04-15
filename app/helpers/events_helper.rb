@@ -4,7 +4,7 @@ module EventsHelper
   end
 
   def preview_users(evt)
-    users = evt.users
+    users = evt.attendees
     names = users.map {|u| u.login}.to_sentence(:connector => 'ja')
     count = names.empty? ? '-' : "(#{users.size})"
     [names, count].join(" ")
