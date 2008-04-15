@@ -97,6 +97,17 @@ describe User do
     @joe.remember_token_expires_at.should_not be_nil
     @joe.remember_token_expires_at.between?(before, after).should be_true
   end
+  
+  it "can be reminded of an event" do
+    pending("implement remind_of")
+    evt = mock_model(:event)
+    @joe.remind_of(evt)
+  end
+  
+  it "knows if the reminder has been sent" do
+    pending("implement reminder_sent")
+    user.remind_of(evt) unless user.reminder_sent(evt)
+  end
 
 protected
 
