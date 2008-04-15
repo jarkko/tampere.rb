@@ -12,8 +12,8 @@
 
   <div id="program_details">
     <div id="participants" class="tidbit">
-      Osallistujat (<%= @event.users.size %>):
-      <%= show_users(@event.users) %>
+      Osallistujat (<%= @event.registered_count %>):
+      <%= show_users(@event.attendees) %>
     </div>
 
     <h3>Ohjelma:</h3>
