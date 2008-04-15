@@ -17,9 +17,9 @@ describe Event do
     Event.find_most_recent
   end
 
-  it "can tell how many users are participating" do
+  it "can tell how many users are attending" do
     evt = Event.new
-    evt.stub!(:participations).and_return(['joe', 'jack', 'alice'])
+    evt.stub!(:attendees).and_return(['joe', 'jack', 'alice'])
     evt.registered_count.should == 3
   end
   
