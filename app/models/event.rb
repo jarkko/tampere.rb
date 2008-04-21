@@ -19,6 +19,12 @@ class Event < ActiveRecord::Base
     find(:all, :order => 'date DESC', :limit => count)
   end
 
+  # Find #count most recent events, partitioned to coming and past
+  def self.find_coming_and_past(count)
+    day_start = Time.now.beginning_of_day
+    find_recent(count).partition { |e| e.date >= day_start }
+  end
+
   # Find most recent event
   def self.find_most_recent
     find(:first, :order => 'date DESC')
