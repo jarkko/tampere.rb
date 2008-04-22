@@ -57,9 +57,10 @@
     <div id="main">
       <div id="menu">
         <span id="events"><%= link_to 'Tapahtumat', events_path %></span> |
-        <span id="archive"><%= link_to 'Arkisto', archived_events_path %></span>
+        <span id="archive"><%= link_to 'Arkisto', archived_events_path %></span> |
+        <span id="about"><%= link_to 'Tietoja', '/about.html' %></span>
         <!-- <span id="members"><%= link_to 'Jäsenet', users_path %></span> -->
-      </div>
+</div>
 
       <div id="content">
         <%= yield  %>
