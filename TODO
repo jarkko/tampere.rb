@@ -4,8 +4,9 @@ _ allow CRUD for admins only
 - show who last edited an item and when
 - add something FUN! Roster rankings? top attendees?
 - mobile interface (append /m before routes? eg. host/m/events?)
-- add separate event notes from event description, so that registered users can
-  check afterwards what happened
+- add separate presentations to events, so that, so that registered users can
+  check afterwards what happened (history is created automatically; käyttäjä <x> 
+  piti esitelmän aiheesta <y> (monta eri variaatiota))
 - openid login
 - add admin interface (user management)
 
