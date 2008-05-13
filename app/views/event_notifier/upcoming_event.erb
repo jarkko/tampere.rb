@@ -1,0 +1,20 @@
+<% loc = @event.location %>
+
+Hi, <%= @account.login %>!
+
+<%= time_ago_in_words(@event.date) %> from now on (<%= fmt_date(@event.date) %>) we have a new meetup
+at <%= loc.title %>, address <%= loc.address %>. The program includes:
+
+~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~
+
+  <%= @event.description %>
+
+~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~
+
+Please check http://majakari.net:8080/events/<%= @event.id %> for more details.
+
+Hope to see you there!
+
+Tampere.rb bot
+
+

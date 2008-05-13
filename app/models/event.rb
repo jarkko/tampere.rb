@@ -50,8 +50,10 @@ class Event < ActiveRecord::Base
     evt = Event.find_upcoming
     return nil unless evt && evt.days_to <= days_before
 
+    # TODO: code smell; reminding is not user's ability, but 
+    # separate behaviour classes
     evt.attendees.each do |user|
-      user.remind_of(evt) unless user.reminder_sent(evt)
+      user.remind_of(evt) unless user.reminder_sent?(evt)
     end
   end
 

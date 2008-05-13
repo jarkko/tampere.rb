@@ -72,6 +72,17 @@ class User < ActiveRecord::Base
     eid = evt_id.to_i
     eid != 0 && self.event_ids.include?(eid)
   end
+  
+  def remind_of(evt)
+    open("/tmp/event_notifier.log", 'w+') do |f|
+      f.write("reminding user #{self.login} of event #{evt.date}")
+    end
+    EventNotifier.deliver_upcoming_event(self, evt)
+  end
+  
+  def reminder_sent?(evt)
+    false
+  end
 
   protected
 
