@@ -61,3 +61,4 @@ end
 
 CalendarDateSelect.format = :finnish
 require 'european_date'
+require 'assert'

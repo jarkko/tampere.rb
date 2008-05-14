@@ -35,7 +35,7 @@ class Event < ActiveRecord::Base
     # use Time.now or DateTime.now
     find(:first, :conditions => ['date >= ?', Time.now], :order => 'date ASC')
   end
-  
+
   # Create new default event. In particular, set date default
   # to next recurring event date
   def self.new_default
@@ -43,14 +43,15 @@ class Event < ActiveRecord::Base
   end
 
   def self.register_user(event_id, user_id)
-    self.find(event_id).attendees.create(:user_id => user_id)
+    evt = find event_id
+    evt.participations.create(:user_id => user_id) unless evt.has_participant?(user_id)
   end
 
   def self.send_reminders_if_needed(days_before)
     evt = Event.find_upcoming
     return nil unless evt && evt.days_to <= days_before
 
-    # TODO: code smell; reminding is not user's ability, but 
+    # TODO: code smell; reminding is not user's ability, but
     # separate behaviour classes
     evt.attendees.each do |user|
       user.remind_of(evt) unless user.reminder_sent?(evt)
@@ -68,7 +69,11 @@ class Event < ActiveRecord::Base
   def days_to
     (self.date.to_date - Time.now.to_date).to_i
   end
-  
+
+  def has_participant?(user_id)
+    self.participations.map(&:user_id).include? user_id
+  end
+
   private
 
   def self.default_event_date
