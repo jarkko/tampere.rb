@@ -1,6 +1,8 @@
 class EventNotifier < ActionMailer::Base
   helper :application
-  def upcoming_event(recipient, event)
+  include ApplicationHelper
+
+  def event_reminder(recipient, event)
      recipients recipient.email
      from       "tampererb+noreply@majakari.net"
      subject    "Reminder: Tampere.rb meeting on #{fmt_date(event.date)}"

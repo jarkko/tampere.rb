@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+  include Assert
+
   belongs_to :location
 
   has_many :participations
@@ -44,18 +46,8 @@ class Event < ActiveRecord::Base
 
   def self.register_user(event_id, user_id)
     evt = find event_id
-    evt.participations.create(:user_id => user_id) unless evt.has_participant?(user_id)
-  end
-
-  def self.send_reminders_if_needed(days_before)
-    evt = Event.find_upcoming
-    return nil unless evt && evt.days_to <= days_before
-
-    # TODO: code smell; reminding is not user's ability, but
-    # separate behaviour classes
-    evt.attendees.each do |user|
-      user.remind_of(evt) unless user.reminder_sent?(evt)
-    end
+    evt.participations.create(:user_id => user_id) unless
+      evt.has_participant?(user_id)
   end
 
   #
