@@ -2,19 +2,23 @@
   <% content_tag(:span, :class => "add_new") do %>
     <%= link_to('Lisää uusi', new_event_path) %> |
     <%= link_to 'Muokkaa', edit_event_path(@event) %> |
-    <%= link_to 'Poista', event_path(@event), :method => :delete %>
+    <%= 
+     button_to "Poista",
+         { :action => "destroy", :id => @event.id }, 
+           :confirm => "Haluatko varmasti poistaa tapahtuman?",
+	   :method => :delete %>
   <% end if logged_in? %>
 
   <h2><%= fmt_date(@event.date) %></h2>
-
-  <%= link_to @event.location.title, @event.location if @event.location %>
-  18.30 - 21.00
-
-  <div id="program_details">
+  
+  <div id="program_details">  
     <div id="participants" class="tidbit">
       Osallistujat (<%= @event.registered_count %>):
       <%= show_users(@event.attendees) %>
     </div>
+    
+    Paikka: <%= link_to @event.location.title, @event.location if @event.location %><br/>
+    Aika: 18.30 - 21.00
 
     <h3>Ohjelma:</h3>
     <div id="program">
