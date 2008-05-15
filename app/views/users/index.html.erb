@@ -1,0 +1,19 @@
+<h1>Jäsenet</h1>
+
+<table>
+  <tr>
+    <th>Käyttäjätunnus</th>
+    <th>Sähköposti</th>    
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%=h user.login %></td>
+    <td><%= user.email %></td>    
+  </tr>
+<% end %>
+</table>
+
+<br/>
+
+

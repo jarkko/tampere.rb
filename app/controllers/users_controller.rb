@@ -3,12 +3,15 @@ class UsersController < ApplicationController
   include AuthenticatedSystem
 
   # TODO: authenticated users can remove other users
-  # before_filter :login_required, :only => [:update, :delete]
+  before_filter :login_required, :only => [:create, :index]
 
   # render new.rhtml
   def new
   end
 
+  def index
+  end
+  
   def create
     cookies.delete :auth_token
     # protects against session fixation attacks, wreaks havoc with 
