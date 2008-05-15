@@ -1,7 +1,7 @@
 module EventsHelper
   def preview_users(evt)
     users = evt.attendees
-    names = users.map {|u| u.login}.to_sentence(:connector => 'ja')
+    names = users.map {|u| u.login}.to_sentence(:connector => 'ja', :skip_last_comma => true)
     count = names.empty? ? '-' : "(#{users.size})"
     [names, count].join(" ")
   end
