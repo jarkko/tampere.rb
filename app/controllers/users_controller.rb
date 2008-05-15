@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   end
 
   def index
+    @users = User.find(:all).reject {|u| u.login =~ /^testi?$/}
   end
   
   def create
