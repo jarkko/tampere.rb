@@ -241,3 +241,5 @@ select:focus
   padding: 1em;
   background-color: #ffff9e;
 }
+
+table.compact { width: 50%; }

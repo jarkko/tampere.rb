@@ -101,7 +101,7 @@ describe User do
 protected
 
   def warn_of_db_access
-    warn "warning: this test hits the database, maybe use mocks instead?"
+    #warn "warning: this test hits the database, maybe use mocks instead?"
   end
 
   def build_user(options = {})
