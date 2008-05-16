@@ -2,18 +2,16 @@
 
 <table class="compact">
   <tr>
-    <th>Käyttäjätunnus</th>
-    <th>Rooli</th>
+    <th>Käyttäjä</th>
     <th>Rekisteröitynyt</th>
+    <th>Rooli</th>    
   </tr>
 
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.login %></td>
-    <td><%= user.role %></td>    
-    <td><%= fmt_date(user.created_at) %></td>    
-  </tr>
-<% end %>
+	<% @users.each do |user| %>
+	  <tr>
+	    <td><%= user.login %></td>    
+	    <td><%= fmt_date(user.created_at) %></td>    
+	    <td><%= user.role %></td>    
+	  </tr>
+	<% end %>
 </table>
-
-<br/>
