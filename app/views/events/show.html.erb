@@ -12,10 +12,10 @@
   <h2><%= fmt_date(@event.date) %></h2>
   
   <div id="program_details">  
-    <div id="participants" class="tidbit">
+    <% content_tag(:div, :id => "participants", :class => "tidbit") do %>
       Osallistujat (<%= @event.registered_count %>):
       <%= show_users(@event.attendees) %>
-    </div>
+    <% end if logged_in? %>
     
     Paikka: <%= link_to @event.location.title, @event.location if @event.location %><br/>
     Aika: 18.30 - 21.00
