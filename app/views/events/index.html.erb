@@ -15,14 +15,15 @@
       <th id="registered_header">Ilmoittautuneita</th>
     </tr>
 
-    <% @coming_events.each do |evt| %>
-    <% confirm_msg = "Oletko varma, että haluat poistaa #{fmt_date(evt.date)} tapahtuman?" %>
-    <tr class="<%= cycle('even', 'odd') %> upcoming">
+    <% @coming_events.reverse.each_with_index do |evt, i| %>
+    <% row_class = cycle('even', 'odd') %>
+    <% row_class += " highlight" if i == 0 %>
+    <tr class="<%= row_class %> upcoming">
       <td><%= link_to fmt_date(evt.date), evt %></td>
       <td><%= preview_event(evt) %></td>
       <td><%= link_to evt.location.title, location_path(evt.location) %></td>
       <td>
-        <%= preview_users(evt) %>
+        <%= preview_users(evt, logged_in?) %>
         <% unless (current_user.participates_event?(evt.id) rescue true) %>
             <%= button_to('Ilmoittaudu',
                           :id => evt.id,

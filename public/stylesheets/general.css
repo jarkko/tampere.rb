@@ -243,3 +243,5 @@ select:focus
 }
 
 table.compact { width: 50%; }
+
+.highlight { background-color: #ffff9e; }

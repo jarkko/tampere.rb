@@ -1,9 +1,10 @@
 module EventsHelper
-  def preview_users(evt)
+  def preview_users(evt, authenticated)
     users = evt.attendees
     names = users.map {|u| u.login}.to_sentence(:connector => 'ja', :skip_last_comma => true)
-    count = names.empty? ? '-' : "(#{users.size})"
-    [names, count].join(" ")
+    count_str = names.empty? ? '-' : "(#{users.size})"
+
+    authenticated ? [names, count_str].join(" ") : users.size
   end
 
   def show_users(users)
