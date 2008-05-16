@@ -68,12 +68,11 @@ class User < ActiveRecord::Base
     save(false)
   end
 
-  # TODO: maybe inherit new user from this class to keep generated class
-  # intact?
-  #  def participates_event?(evt_id)
-  #  eid = evt_id.to_i
-  #  eid != 0 && self.event_ids.include?(eid)
-  # end
+  # TODO: move to helper? use event's respective method?
+  def participates_event?(evt_id)
+    eid = evt_id.to_i
+    eid != 0 && self.event_ids.include?(eid)
+  end
 
   protected
 

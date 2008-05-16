@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   include AuthenticatedSystem
 
   # TODO: authenticated users can remove other users
-  before_filter :login_required, :only => [:create, :index]
+  before_filter :login_required, :only => [:index]
 
   # render new.rhtml
   def new
