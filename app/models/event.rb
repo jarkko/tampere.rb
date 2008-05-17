@@ -34,7 +34,6 @@ class Event < ActiveRecord::Base
 
   # Find next upcoming event, returning nil if not found
   def self.find_upcoming
-    # use Time.now or DateTime.now
     find(:first, :conditions => ['date >= ?', Time.now], :order => 'date ASC')
   end
 
