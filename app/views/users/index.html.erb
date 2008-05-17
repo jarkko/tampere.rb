@@ -11,7 +11,7 @@
 	  <tr>
 	    <td><%= user.login %></td>    
 	    <td><%= fmt_date(user.created_at) %></td>    
-	    <td><%= user.role %></td>    
+	    <td><%= fin_role(user.role) %></td>
 	  </tr>
 	<% end %>
 </table>
