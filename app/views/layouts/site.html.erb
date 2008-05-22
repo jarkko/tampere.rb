@@ -27,7 +27,10 @@
       <div id="banner">
         <h1># Tampere.rb</h1>
 
-        members.each { |m| m.share(:knowledge).while_having(:fun) }
+        <code>
+          members.each { |m| m.share(:knowledge).while_having(:fun) }
+        </code>
+         
 
         <%= content_tag(:p, flash[:notice], :class=>"flash", :id=>"notice") if 
         flash[:notice] %>
@@ -41,12 +44,12 @@
         <% else %>
         <div id="credentials">
             <% form_tag session_path do -%>
-            <label for="login">Käyttäjätunnus:</label>
-            <%= text_field_tag 'login' %><br/>
+              <label for="login">Käyttäjätunnus:</label>
+              <%= text_field_tag 'login' %><br/>
 
-            <label for="password">Salasana:</label>
-            <%= password_field_tag 'password' %><br/>
-            <%= link_to('Rekisteröidy', "/users/new") %> |  <%= submit_tag 'Kirjaudu' %>
+              <label for="password">Salasana:</label>
+              <%= password_field_tag 'password' %><br/>
+              <%= link_to('Rekisteröidy', "/users/new") %> |  <%= submit_tag 'Kirjaudu' %>
             <% end -%>
         </div>
         <% end %>
