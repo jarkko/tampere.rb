@@ -9,6 +9,7 @@ class EventsController < ApplicationController
   # GET /events.xml
   def index
     @coming_events, @past_events = Event.find_coming_and_past(5)
+    @coming_events.reverse!
 
     respond_to do |format|
       format.html # index.html.erb
@@ -62,7 +63,7 @@ class EventsController < ApplicationController
   def create
     # TODO: this is a bit too hackish, and deals too much with handling attributes
     # -> move to model
-    
+
     attrs = params[:event]
     attrs['location'] = Location.find_by_id_or_build_by_name(attrs['location'],
                                                              attrs['location_id'])
@@ -87,7 +88,7 @@ class EventsController < ApplicationController
   # PUT /events/1.xml
   def update
     @event = Event.find(params[:id])
-    
+
     respond_to do |format|
       # TODO: belongs to Event#update_from_form?
       params[:event]['date'] = EuropeanDate.to_iso(params[:event]['date'])

@@ -1,29 +1,21 @@
-
 <h2>Lisää uusi tapahtuma</h2>
 
 <%= error_messages_for :event %>
 <% @event.location = nil %>
 
 <% form_for(@event) do |f| %>
-  <div>
-    <%= f.label(:date, 'Päivämäärä:') %>
-    <%= f.calendar_date_select :date, :time => false %>
-  </div>
+    <%= f.label :date, 'Päivämäärä:', :class => 'aligned' %>
+    <%= f.calendar_date_select :date, :time => false, :class => 'aligned' %><br/>
 
-  <div>
-    <%= f.label(:location_id, 'Sijainti:') %>
-    <%= f.select 'location_id', Location.find(:all).map { |loc| [loc.title, loc.id] } %>
-    tai lisää uusi: <%= f.text_field :location %>
-  </div>
+    <%= f.label :location_id, 'Sijainti:', :class => 'aligned' %>
+    <%= f.select 'location_id', Location.find(:all).map { |loc| [loc.title, loc.id] } %> tai lisää uusi: <%= f.text_field :location %><br/>
 
-  <div>
-    <%= label(:description, 'Ohjelma:') %><br/>
-    <%= f.text_area :description, :cols => 80, :rows => 10 %>
-  </div>
+    <%= label :description, 'Ohjelma:' %><br/>
+    <%= f.text_area :description, :cols => 68, :rows => 20 %>
 
   <p class="clearing">
     <%= f.submit "Tallenna" %>
   </p>
 <% end %>
 
-<%= link_to 'Tapahtumat', events_path %>
+<%= back_to events_path, 'Takaisin tapahtumiin' %>

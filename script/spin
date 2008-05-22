@@ -4,4 +4,4 @@ for p in 11000 11001 11002; do
   #echo $pidfile
   test -f $pidfile && kill $(cat $pidfile)
 done
-script/process/spawner -p 11000 -i 3
+script/process/spawner -p 11000 -i 3 -e $1

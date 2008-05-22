@@ -9,7 +9,7 @@
 	   :method => :delete %>
   <% end if logged_in? %>
 
-  <h2><%= fmt_date(@event.date) %></h2>
+  <h2><%= @event.fmt_date %></h2>
   
   <div id="program_details">  
     <% content_tag(:div, :id => "participants", :class => "tidbit") do %>
@@ -17,7 +17,7 @@
       <%= show_users(@event.attendees) %>
     <% end if logged_in? %>
     
-    Paikka: <%= link_to @event.location.title, @event.location if @event.location %><br/>
+    Paikka: <%= link_to @event.location_name, @event.location %><br/>
     Aika: 18.30 - 21.00
 
     <h3>Ohjelma:</h3>
@@ -29,5 +29,5 @@
 </div>
 
 <p class="clearing" id="back_link">
-  <%= link_to '&larr; Takaisin tapahtumiin', events_path %>
+  <%= back_to events_path, 'Takaisin tapahtumiin' %>
 </p>

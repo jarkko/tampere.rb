@@ -65,6 +65,10 @@ class Event < ActiveRecord::Base
     self.participations.map(&:user_id).include? user_id
   end
 
+  def location_name
+    self.location ? location.title : location
+  end
+
   private
 
   def self.default_event_date

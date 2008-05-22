@@ -15,16 +15,16 @@
       <th id="registered_header">Ilmoittautuneita</th>
     </tr>
 
-    <% @coming_events.reverse.each_with_index do |evt, i| %>
+    <% @coming_events.each_with_index do |evt, i| %>
     <% row_class = cycle('even', 'odd') %>
     <% row_class += " highlight" if i == 0 %>
     <tr class="<%= row_class %> upcoming">
-      <td><%= link_to fmt_date(evt.date), evt %></td>
+      <td><%= link_to evt.fmt_date, evt %></td>
       <td><%= preview_event(evt) %></td>
-      <td><%= link_to evt.location.title, location_path(evt.location) %></td>
+      <td><%= link_to evt.location_name, location_path(evt.location) %></td>
       <td>
         <%= preview_users(evt, logged_in?) %>
-        <% unless (current_user.participates_event?(evt.id) rescue true) %>
+        <% if logged_in? && current_user.participates_event?(evt.id) %>
             <%= button_to('Ilmoittaudu',
                           :id => evt.id,
                           :user_id => current_user.id,
@@ -44,16 +44,12 @@
     <% end %>
 
     <% @past_events.each do |evt| %>
-    <tr class="<%= %> <%= cycle('even', 'odd') %> past %>">
-      <td><%= link_to fmt_date(evt.date), evt %></td>
-      <td><%= preview_event(evt) %></td>
-      <td><%= evt.location.title %></td>
-      <td><%= evt.registered_count %></td>
-    </tr>
+      <tr class="<%= %> <%= cycle('even', 'odd') %> past %>">
+        <td><%= link_to evt.fmt_date, evt %></td>
+        <td><%= preview_event(evt) %></td>
+        <td><%= evt.location_name %></td>
+        <td><%= evt.registered_count %></td>
+      </tr>
     <% end %>
-
   </table>
-
-  <br/>
-
 </div>
