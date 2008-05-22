@@ -24,7 +24,7 @@
       <td><%= link_to evt.location_name, location_path(evt.location) %></td>
       <td>
         <%= preview_users(evt, logged_in?) %>
-        <% if logged_in? && current_user.participates_event?(evt.id) %>
+        <% if logged_in? && !current_user.participates_event?(evt.id) %>
             <%= button_to('Ilmoittaudu',
                           :id => evt.id,
                           :user_id => current_user.id,
