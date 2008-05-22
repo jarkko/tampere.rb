@@ -15,8 +15,8 @@ lg: b9bd9c
 /* colors from streamlined era color theme */
 
 body { background-color: #ffe29e; /* yellow */
-       /* background-image: url("/images/logo_background2.png");
-       background-repeat: repeat-x; */
+       background-image: url("/images/nasinneula-silhouette.png");
+       background-repeat: no-repeat;
        color: #000;
        width: 98%;
 }
@@ -128,7 +128,10 @@ div.progressBar div.background {
 
 #banner {
   float: left;
+  margin-left: 18em;
   font-weight: bold;
+  padding-top: 1.5em;
+  padding-bottom: 12em;
   color: #4f2f2f;
 }
 
