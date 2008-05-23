@@ -75,7 +75,7 @@ h3 { font-size: 125%; margin-top: 1em; }
 
 #notice {
   color: black;
-  background-color: #9c9966;
+  background-color: #9fff9f;
   font-weight: bold;
   padding: 0.25em 1.5em 0.5em 1.5em;
 }
@@ -137,15 +137,16 @@ div.progressBar div.background {
 
 
 #banner {
-  float: left;
-  margin-left: 18em;
-  font-weight: bold;
-  padding-top: 1.5em;
-  padding-bottom: 11em;
   color: #4f2f2f;
+  float: left;
+  font-weight: bold;
+  height: 6em;
+  margin-left: 18em;
+  padding-bottom: 11em;
+  padding-top: 1.5em;
 }
 
-#banner .flash { margin-left: 10em;  }
+#banner .flash { margin-left: 0em;  }
 #banner h1 { margin-top: 0em; }
 
 #logo_image { float: left; margin-top: 0em; margin-right: 1em; }
