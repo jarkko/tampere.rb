@@ -3,14 +3,14 @@ class UsersController < ApplicationController
   include AuthenticatedSystem
 
   # TODO: authenticated users can remove other users
-  before_filter :login_required, :only => [:index]
+  before_filter :login_required, :only => [:index, :destroy]
 
   # render new.rhtml
   def new
   end
 
   def index
-    @users = User.find(:all).reject {|u| u.login =~ /^testi?$/}
+    @users = User.find(:all)
   end
   
   def create
@@ -27,5 +27,24 @@ class UsersController < ApplicationController
     else
       render :action => 'new'
     end
+  end
+  
+  def destroy
+    # TODO: too complex for controller
+    current_user_id = current_user.id
+    u = User.find params[:id] 
+    u.destroy if current_user.admin? || current_user_id == u.id
+
+    return_path = users_path
+    
+    if current_user_id == params[:id]
+      reset_session
+      return_path = events_path
+    end
+    
+    respond_to { |format|
+      format.html { redirect_to return_path }
+      format.xml  { head :ok }
+    }
   end
 end

@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   # override default access_denied method
   def access_denied
-    flash[:notice] = 'Login required, please register or login'
+    flash[:notice] = 'Ole hyvä ja kirjaudu sisään tai rekisteröidy'
     redirect_to events_path
   end
 end

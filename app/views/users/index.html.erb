@@ -6,12 +6,18 @@
     <th>Rekisteröitynyt</th>
     <th>Rooli</th>    
   </tr>
-
-	<% @users.each do |user| %>
-	  <tr>
-	    <td><%= user.login %></td>    
-	    <td><%= fmt_date(user.created_at) %></td>    
-	    <td><%= fin_role(user.role) %></td>
-	  </tr>
-	<% end %>
+  <% @users.each do |user| %>
+  <tr>
+    <td>
+      <%= button_to "Poista",
+       { :action => "destroy", :id => user.id }, 
+         :confirm => "haluatko varmasti poistaa käyttäjän #{user.login}?",
+	 :method => :delete if current_user.admin? || user.id == current_user.id %>
+      
+      <%= user.login %>
+    </td>    
+    <td><%= fmt_date(user.created_at) %></td>    
+    <td><%= fin_role(user.role) %></td>
+  </tr>
+  <% end %>
 </table>

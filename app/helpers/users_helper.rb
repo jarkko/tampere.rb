@@ -1,5 +1,5 @@
 module UsersHelper
-  ROLE_MAP = {'admin' => 'yll&auml;pit&auml;j&auml;', 'member' => 'j&auml;sen'}
+  ROLE_MAP = {'admin' => 'ylläpitäjä', 'member' => 'jäsen'}
   def fin_role(role)
     ROLE_MAP[role]
   end

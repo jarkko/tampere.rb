@@ -2,7 +2,7 @@ require 'digest/sha1'
 class User < ActiveRecord::Base
   include Assert
 
-  has_many :participations
+  has_many :participations, :dependent => :destroy
   has_many :events, :through => :participations
 
   # Virtual attribute for the unencrypted password
@@ -72,6 +72,10 @@ class User < ActiveRecord::Base
   def participates_event?(evt_id)
     eid = evt_id.to_i
     eid != 0 && self.event_ids.include?(eid)
+  end
+  
+  def admin?
+    self.role == 'admin'
   end
 
   protected
