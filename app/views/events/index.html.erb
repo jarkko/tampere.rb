@@ -3,7 +3,7 @@
     <%= link_to 'Lisää uusi', new_event_path if logged_in? %>
   </span>
 
-  <h2>Tulevat tapahtumat</h2>
+  <%= content_tag :h2, @title %>
 
   <table>
     <tr>

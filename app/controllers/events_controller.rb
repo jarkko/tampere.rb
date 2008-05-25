@@ -9,7 +9,7 @@ class EventsController < ApplicationController
   # GET /events.xml
   def index
     @events = Event.find_upcoming(5).reverse
-
+    @title = 'Tulevat tapahtumat'
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => events }
@@ -20,6 +20,7 @@ class EventsController < ApplicationController
   # GET /events/archived.xml
   def archived
     now = Time.now
+    @title = 'Menneet tapahtumat'
     @events = Event.find_recent(100).select { |e| e.date < now }
 
     respond_to do |format|
