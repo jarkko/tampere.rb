@@ -1,5 +1,7 @@
 set -eu
-for pid in tmp/pids/dispat*.pid; do
-  kill $(cat $pid)
+for p in 11000 11001 11002; do
+  pidfile=tmp/pids/dispatch.$p.pid
+  #echo $pidfile
+  test -f $pidfile && kill $(cat $pidfile)
 done
-script/process/spawner -p 11000 -i 2 -e $1
+script/process/spawner -p 11000 -i 3 -e $1
