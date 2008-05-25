@@ -25,7 +25,7 @@
                             :id => evt.id,
                             :user_id => current_user.id,
                             :controller => :events,
-                            :action => :register) %>
+                            :action => :register) if now < evt.date %>
           <% end %>
         </td>
       </tr>
