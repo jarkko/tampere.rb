@@ -27,9 +27,7 @@
       <div id="banner">
         <h1>Tampere.rb</h1>
 
-        <code>
-          members.each { |m| m.share(:knowledge).while_having(:fun) }
-        </code>
+        <% # <code>members.each { |m| m.share(:knowledge).while_having(:fun) }</code> %>
 
         <%= content_tag(:p, flash[:notice], :class=>"flash", :id=>"notice") if 
         flash[:notice] %>

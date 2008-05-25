@@ -36,5 +36,9 @@ module ApplicationHelper
     end
     content_tag(:span, link_to(description, path), :id => span_id)
   end
+
+  def more_link_to(path)
+    link_to "Lue lisää &raquo;", path
+  end
 end
 

@@ -1,3 +1,14 @@
+<% if request.path_parameters[:action] == 'index' %>
+  <p>
+  Tampere.rb on vapaamuotoinen yhteisö, joka järjestää
+  säännöllisiä <a class="external" href="http://www.ruby-lang.org">Ruby</a>-
+   ja <a class="external" href="http://www.rubyonrails.org">Ruby on Rails</a>
+  - tapaamisia. Ohessa tietoja tulevista tapahtumista.
+  <%= more_link_to "/about" %>
+  </p>
+<% end %>
+
+
 <div id="event_list">
   <span class="add_new">
     <%= link_to 'Lisää uusi', new_event_path if logged_in? %>
