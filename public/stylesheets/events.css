@@ -2,10 +2,8 @@
 tr.upcoming td { padding-bottom: 1em; }
 tr.past { padding-top: 0.5em; color: #777; }
 
-#date_header { width: 5%; padding-bottom: 1em;}
-#program_header { width: 60%; }
-#location_header { width: 15%; }
-#registered_header { width: 20%; }
+#coordinates { width: 25%; }
+#program_header { width: 70%; }
 
 .list .button-to { margin-left: 1em; }
 

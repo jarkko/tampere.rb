@@ -28,5 +28,13 @@ module ApplicationHelper
   def build_selection(objects, menu_attribute)
     objects.map { |obj| [obj.send(menu_attribute), obj.id] }
   end
+
+  def menu_link_to(description, path, request)
+    span_id = description.downcase
+    if path != request.path
+      description += " &raquo;" unless path == request.path
+    end
+    content_tag(:span, link_to(description, path), :id => span_id)
+  end
 end
 

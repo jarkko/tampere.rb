@@ -3,52 +3,31 @@
     <%= link_to 'Lisää uusi', new_event_path if logged_in? %>
   </span>
 
-  <% first_heading = @coming_events.empty? ? 'Menneet tapahtumat' : 'Tulevat tapahtumat' %>
+  <h2>Tulevat tapahtumat</h2>
 
-  <h2><%= first_heading %></h2>
-
-  <table class="list">
+  <table>
     <tr>
-      <th id="date_header">Päivämäärä</th>
+      <th id="coordinates">Koordinaatit</th>
       <th id="program_header">Ohjelma</th>
-      <th id="location_header">Sijainti</th>
-      <th id="registered_header">Ilmoittautuneita</th>
     </tr>
 
-    <% @coming_events.each_with_index do |evt, i| %>
-    <% row_class = cycle('even', 'odd') %>
-    <% row_class += " highlight" if i == 0 %>
-    <tr class="<%= row_class %> upcoming">
-      <td><%= link_to evt.fmt_date, evt %></td>
-      <td><%= preview_event(evt) %></td>
-      <td><%= link_to evt.location_name, location_path(evt.location) %></td>
-      <td>
-        <%= preview_users(evt, logged_in?) %>
-        <% if logged_in? && !current_user.participates_event?(evt.id) %>
-            <%= button_to('Ilmoittaudu',
-                          :id => evt.id,
-                          :user_id => current_user.id,
-                          :controller => :events,
-                          :action => :register) %>
-        <% end %>
-      </td>
-    </tr>
-    <% end %>
+    <% now = Time.now %>
+    <% @events.each_with_index do |evt, i| %>
+      <% row_class = cycle('even', 'odd') %>
+      <% row_class += " highlight" if i == 0 && evt.date >= now %>
+      <tr class="<%= row_class %> upcoming">
+        <td><%= link_to evt.fmt_date, evt %>, 
+            <%= link_to evt.location_name, location_path(evt.location) %></td>
+        <td><%= preview_event(evt) %>
 
-    <% unless @coming_events.empty? %>
-    <tr>
-      <th colspan="4">
-        <h2>Menneet tapahtumat</h2>
-      </th>
-    </tr>
-    <% end %>
-
-    <% @past_events.each do |evt| %>
-      <tr class="<%= %> <%= cycle('even', 'odd') %> past %>">
-        <td><%= link_to evt.fmt_date, evt %></td>
-        <td><%= preview_event(evt) %></td>
-        <td><%= evt.location_name %></td>
-        <td><%= evt.registered_count %></td>
+          <% if logged_in? && !current_user.participates_event?(evt.id) %>
+              <%= button_to('Ilmoittaudu',
+                            :id => evt.id,
+                            :user_id => current_user.id,
+                            :controller => :events,
+                            :action => :register) %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </table>

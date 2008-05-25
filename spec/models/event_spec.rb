@@ -17,12 +17,12 @@ describe Event do
     end
   end
 
-  it "can be asked for most recent (doesn't check the query)" do
+  it "can be asked for most recent (doesn't check the result)" do
     Event.find_most_recent
   end
 
-  it "can be asked for next upcoming event (doesn't check the query)" do
-    Event.find_upcoming
+  it "can be asked for next upcoming event (doesn't check the result)" do
+    Event.find_first_in_future
   end
 
   it "can tell how many users are attending it" do

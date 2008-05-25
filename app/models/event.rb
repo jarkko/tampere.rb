@@ -22,9 +22,9 @@ class Event < ActiveRecord::Base
   end
 
   # Find #count most recent events, partitioned to coming and past
-  def self.find_coming_and_past(count)
+  def self.find_upcoming(count)
     day_start = Time.now.beginning_of_day
-    find_recent(count).partition { |e| e.date >= day_start }
+    find_recent(count).select { |e| e.date >= day_start }
   end
 
   # Find most recent event
@@ -32,8 +32,8 @@ class Event < ActiveRecord::Base
     find(:first, :order => 'date DESC')
   end
 
-  # Find next upcoming event, returning nil if not found
-  def self.find_upcoming
+  # Find next upcoming event, return nil if not found
+  def self.find_first_in_future
     find(:first, :conditions => ['date >= ?', Time.now], :order => 'date ASC')
   end
 

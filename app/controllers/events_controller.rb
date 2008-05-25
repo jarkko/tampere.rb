@@ -8,8 +8,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-    @coming_events, @past_events = Event.find_coming_and_past(5)
-    @coming_events.reverse!
+    @events = Event.find_upcoming(5).reverse
 
     respond_to do |format|
       format.html # index.html.erb
@@ -20,10 +19,8 @@ class EventsController < ApplicationController
   # GET /events/archived
   # GET /events/archived.xml
   def archived
-    events = Event.find_recent(100)
     now = Time.now
-    @coming_events = []
-    @past_events = events.select { |e| e.date < now }
+    @events = Event.find_recent(100).select { |e| e.date < now }
 
     respond_to do |format|
       format.html { render :action => :index }
@@ -92,6 +89,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       # TODO: belongs to Event#update_from_form?
       params[:event]['date'] = EuropeanDate.to_iso(params[:event]['date'])
+      begin
       if @event.update_attributes(params[:event])
         flash[:notice] = 'Tapahtuma päivitetty.'
         format.html { redirect_to(@event) }
@@ -99,6 +97,10 @@ class EventsController < ApplicationController
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+      end
+      rescue ActiveRecord::StaleObjectError => e
+        flash[:notice] = 'Valitettavasti tapahtumaa muokkasi jo joku
+    toinen. Yritä myöhemmin uudestaan.'
       end
     end
   end

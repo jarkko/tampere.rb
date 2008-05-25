@@ -12,7 +12,7 @@ class MailerWorker < BackgrounDRb::MetaWorker
   end
 
   def remind_about_coming_event(days_before)
-    evt = Event.find_upcoming
+    evt = Event.find_first_in_future
     return nil unless evt && evt.days_to == days_before
 
     evt.attendees.each do |user|

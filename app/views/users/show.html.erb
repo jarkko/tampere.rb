@@ -1,0 +1,17 @@
+<h2>Käyttäjätiedot: <%= @user.login %></h2>
+
+<table class="compact">
+  <% [[:login, true], 
+      [:email, false], 
+      [:web_page, true],
+      [:created_at, true], 
+      [:updated_at, true],
+      [:role, true]].each do |attr, show_for_all| %>
+    <% content_tag(:tr) do %> 
+      <td class="aligned"><%= attr.to_s.capitalize.humanize %>:</td>
+      <td><%= @user.send(attr) %></td>
+    <% end if show_for_all || current_user.id == @user.id %>
+  <% end %>
+</table>
+
+

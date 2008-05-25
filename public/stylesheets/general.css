@@ -1,48 +1,36 @@
 /* default styles originally from scaffold */
 
-/* streamlined colors
-yellow bg: ffe29e
-yellow: ffff9e
-red: 8a2628
-white: fffdff
-green: 475a22
-g1: 7e6f48
-g2: 9c9966
-lg: b9bd9c
-
-*/
-
-/* colors from streamlined era color theme */
-
 html { 
   margin-left: 10%;
   margin-right: 10%;
-  margin-top: 1em;
+  margin-top: 0.5em;
 }
 
-body { background-color: #ffe29e; /* yellow */
+body { background-color: #ffffef;
        background-image: url("/images/nasinneula-silhouette.png");
        background-repeat: no-repeat;
        color: #000;
-       width: 98%;
+       width: 100%;
 }
 
 
-html, body {
-  height: 95%;
+html { height: 95%;}
+body { height: 95%; }
+
+h1, h2, h3 { color: #8f0000; 
+  font-family: Georgia, Times, "Times New Roman", serif; 
 }
 
 body, p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size:   9pt;
-  line-height: 18px;
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  font-size: 9pt;
+  line-height: 2em;
 }
 
 td { vertical-align: top; }
 
-
 pre {
-  background-color: #ffffe9;
+  background-color: #ffffa0;
   padding: 10px;
   font-size: 9pt;
 }
@@ -51,7 +39,7 @@ pre {
 }
 
 a {
-  color: #475a22; /* green */
+  color: #404080; 
   font-weight: bold;
   text-decoration: none;
 }
@@ -67,9 +55,8 @@ a:hover { background-color: #fffdff; }
 h1 { font-size: 160%; }
 h2 {
   font-size: 140%;
-  color: #7e6f48;
-  background: #b9bd9c;
-  padding: 0.25em 0.5em 0.25em 0.5em;
+  /* top right bottom left */
+  padding: 0.25em 0.5em 0.25em 0em;
 }
 h3 { font-size: 125%; margin-top: 1em; }
 
@@ -162,22 +149,29 @@ th { text-align: left; padding-bottom: 0.5em; }
 }
 
 .add_new, .add_new a {
-  color: #fffdff;
   font-weight: bold;
 }
 
-.add_new a:hover { background-color: #475a22; }
+.add_new a:hover { background-color: #c0f0c0; }
 
 #menu
 {
   clear: both;
   padding-top: 0em;
+
 }
 
-#menu span
+
+#menu
 {
   font-size: 120%;
-  padding-right: 0.5em;
+  margin: 0;
+  padding: 0.5em;
+}
+
+#menu { border: 1px dashed gray; }
+#menu span { margin-right: 3em; }
+#menu .current {
 }
 
 
@@ -259,9 +253,8 @@ select:focus
   margin-right: 0em;
   margin-left: 2em;
   padding: 1em;
-  background-color: #ffff9e;
 }
 
 table.compact { width: 50%; }
 
-.highlight { background-color: #ffff9e; }
+.tidbit, .highlight { background-color: #ffffce; }
