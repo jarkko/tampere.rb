@@ -51,7 +51,7 @@ a.external {
 
 
 a:visited {  }
-a:hover { background-color: #fffdff; }
+a:hover { background-color: #d0ffd0; }
 
 h1 { font-size: 200%; }
 h2 {
@@ -153,7 +153,7 @@ th { text-align: left; padding-bottom: 0.5em; }
   font-weight: bold;
 }
 
-.add_new a:hover { background-color: #c0f0c0; }
+
 
 #menu
 {
@@ -165,13 +165,13 @@ th { text-align: left; padding-bottom: 0.5em; }
 
 #menu
 {
+  border: 1px dashed gray;
   font-size: 120%;
   margin: 0;
   padding: 0.5em;
 }
 
-#menu { border: 1px dashed gray; }
-#menu span { margin-right: 3em; }
+#menu span { margin-right: 5em; }
 #menu .current {
 }
 
