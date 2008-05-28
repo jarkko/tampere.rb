@@ -1,7 +1,5 @@
 require 'digest/sha1'
 class User < ActiveRecord::Base
-  attr_protected :role
-
   include Assert
 
   has_many :participations, :dependent => :destroy
