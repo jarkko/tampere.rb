@@ -1,17 +1,23 @@
 <h2>Käyttäjätiedot: <%= @user.login %></h2>
 
-<table class="compact">
-  <% [[:login, true], 
-      [:email, false], 
-      [:web_page, true],
-      [:created_at, true], 
-      [:updated_at, true],
-      [:role, true]].each do |attr, show_for_all| %>
-    <% content_tag(:tr) do %> 
-      <td class="aligned"><%= attr.to_s.capitalize.humanize %>:</td>
-      <td><%= @user.send(attr) %></td>
-    <% end if show_for_all || current_user.id == @user.id %>
-  <% end %>
-</table>
+<em>Huomaa, että sähköposti ei näy muille käyttäjille</em>
 
+<div id="user_details">
+  Rooli: <%=h @user.role %><br/>
+
+  <% if current_user.id == @user.id %>
+    Email: <%=h @user.email %><br/>
+  <% end %>  
+  
+  <% unless @user.web_page.blank? %>
+    Web: <%= link_to h(@user.web_page), h(@user.web_page) %><br/>
+  <% end %>
+
+  <p>
+  Luotu: <%= @user.created_at.to_s(:db) %><br/>
+  Päivitetty: <%= @user.updated_at.to_s(:db) %><br/>
+  </p>
+</div>
+
+<p><%= link_to 'Muokkaa', edit_user_path(@user) if @user.id == current_user.id %></p>
 

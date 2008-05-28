@@ -1,0 +1,19 @@
+<h2>Muokataan käyttäjää <%= @user.login  %></h2>
+
+<%= error_messages_for :user %>
+
+<% div_for @user do %>
+  <% form_for @user do |f| %>
+    <label class="aligned" for="email">Sähköposti:</label>
+    <%= f.text_field :email, :size => 40 %><br/>
+
+    <label class="aligned" for="web_page">WWW:</label>
+    <%= f.text_field :web_page, :size => 40 %><br/>
+
+
+    <p class="clearing">
+      <%= submit_tag 'Tallenna' %>
+    </p>
+  <% end -%>
+  <%= link_to 'Takaisin', :back %>
+<% end %>

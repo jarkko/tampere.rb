@@ -87,18 +87,19 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
 
+    # TODO: belongs to Event#update_from_form?
+
     respond_to do |format|
-      # TODO: belongs to Event#update_from_form?
       params[:event]['date'] = EuropeanDate.to_iso(params[:event]['date'])
       begin
-      if @event.update_attributes(params[:event])
-        flash[:notice] = 'Tapahtuma päivitetty.'
-        format.html { redirect_to(@event) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
-      end
+        if @event.update_attributes(params[:event])
+          flash[:notice] = 'Tapahtuma päivitetty.'
+          format.html { redirect_to(@event) }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+        end
       rescue ActiveRecord::StaleObjectError => e
         flash[:notice] = 'Valitettavasti tapahtumaa muokkasi jo joku
     toinen. Yritä myöhemmin uudestaan.'

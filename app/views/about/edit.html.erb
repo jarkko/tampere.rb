@@ -1,0 +1,15 @@
+<h2>Muokataan Tietoja -sivua</h2>
+
+<%= error_messages_for :about_page %>
+
+<% div_for @page do %>
+  <% form_for @page, :url => '/about/update' do |f| %>
+    <%= f.text_area :content, :rows => 30, :cols => 80 %>
+
+    <p class="clearing">
+      <%= submit_tag 'Tallenna' %>
+    </p>
+  <% end -%>
+<% end %>
+
+<%= link_to 'Takaisin', :back %>

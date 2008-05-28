@@ -1,21 +1,5 @@
 # Methods added to this helper will be available to all templates in the application.
 
-class ActiveRecord::Base
-  def fmt_date
-    if self.respond_to? :date
-      formatted_date(self.date)
-    else
-      raise MethodMissing, "object doesn't respond to date"
-    end
-  end
-
-  private
-
-  def formatted_date(date)
-    date.strftime("%d.%m.%Y")
-  end
-end
-
 module ApplicationHelper
   def fmt_date(dob)
     dob.strftime("%d.%m.%Y")
@@ -39,6 +23,27 @@ module ApplicationHelper
 
   def more_link_to(path)
     link_to "Lue lisää &raquo;", path
+  end
+
+  def admin_user?
+    return false if !current_user || current_user == :false
+    current_user && current_user.admin?
+  end
+end
+
+class ActiveRecord::Base
+  def fmt_date
+    if self.respond_to? :date
+      formatted_date(self.date)
+    else
+      raise MethodMissing, "object doesn't respond to date"
+    end
+  end
+
+  private
+
+  def formatted_date(date)
+    date.strftime("%d.%m.%Y")
   end
 end
 

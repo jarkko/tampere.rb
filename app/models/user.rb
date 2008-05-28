@@ -1,5 +1,7 @@
 require 'digest/sha1'
 class User < ActiveRecord::Base
+  attr_protected :role
+
   include Assert
 
   has_many :participations, :dependent => :destroy
@@ -73,7 +75,7 @@ class User < ActiveRecord::Base
     eid = evt_id.to_i
     eid != 0 && self.event_ids.include?(eid)
   end
-  
+
   def admin?
     self.role == 'admin'
   end

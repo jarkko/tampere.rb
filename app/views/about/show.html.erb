@@ -1,3 +1,4 @@
+<!--
 <h2>Yleistä</h2>
 
 Tampere.rb on vapaamuotoinen yhteisö, joka järjestää
@@ -21,4 +22,13 @@ postituslista <a href="mailto:ruby-tampere@googlegroups.com">ruby-tampere@google
 sekä oma irc-kanava
 <code>#Tampere.rb</code>. Aina voit myös vain tulla mukaan tapahtumiimme ja
 katsoa, miltä meininki näyttää. Tervetuloa mukaan!
+-->
+
+<% content_tag :div, :class => 'modify' do %>
+  <%= link_to('Muokkaa', '/about/edit') if admin_user? %>
+<% end %>
+<p>
+<%= @page.content %>
+</p>
+
 
